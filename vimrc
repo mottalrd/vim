@@ -76,12 +76,5 @@ nmap <silent> t<C-g> :TestVisit<CR>   " t Ctrl+g
 let test#strategy = "vimterminal"
 
 " Avoid the escape key http://vim.wikia.com/wiki/Avoid_the_escape_key
-" another alternative is
-" :imap jj <Esc>
-nnoremap <Tab> <Esc>
-vnoremap <Tab> <Esc>gV
-onoremap <Tab> <Esc>
-cnoremap <Tab> <C-C><Esc>
-inoremap <Tab> <Esc>`^
-inoremap <Leader><Tab> <Tab>
+:imap jj <Esc>
 
