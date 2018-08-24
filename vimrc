@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tomasr/molokai'
 Plug 'janko-m/vim-test'
+Plug 'vim-ruby/vim-ruby'
 
 " Initialize plugin system
 call plug#end()
@@ -78,3 +79,26 @@ let test#strategy = "vimterminal"
 " Avoid the escape key http://vim.wikia.com/wiki/Avoid_the_escape_key
 :imap jj <Esc>
 
+" Use The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+else
+  echom "You don't have ag installed."
+endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
+" Better % to jump between keywords https://thoughtbot.com/upcase/videos/navigating-within-ruby-files
+runtime macros/matchit.vim
