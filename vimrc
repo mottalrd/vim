@@ -83,6 +83,8 @@ vnoremap <S-Tab> <gv
 
 " Quickly open nerdtree https://stackoverflow.com/questions/6467634/create-a-command-shortcut-for-nerdtree-in-vim-editor
 nmap <leader>ne :NERDTree<cr>
+" Show hidden files
+let NERDTreeShowHidden=1
 
 " vim-test mappings
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_macOS
