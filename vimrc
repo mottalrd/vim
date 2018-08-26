@@ -125,3 +125,9 @@ nmap <leader>fa gg=G
 " Use :noh to then remove the highlight
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 
+" TODO: ctags
+
+" TODO: fold / unfold code
+
+" TODO: try sessions https://github.com/xolox/vim-session
+
