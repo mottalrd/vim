@@ -74,6 +74,12 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Quit buffer with
+nnoremap <leader>q :bd<CR>
+
+" Go back to terminal with leader space instead of Ctrl-Z
+nnoremap <leader><Space> <C-Z>
+
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 nnoremap <Tab> >>_
 nnoremap <S-Tab> <<_
