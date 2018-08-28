@@ -134,8 +134,20 @@ nmap <leader>fa gg=G
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 
 " TODO: ctags
+" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 
 " TODO: fold / unfold code
 
 " TODO: try sessions https://github.com/xolox/vim-session
 
+" TODO: Ag to open in a vertical panel
+
+" TODO: git plugin for blame / history
+
+" TODO: autosave https://github.com/vim-scripts/vim-auto-save
+
+" TODO: Ag do not close if you can't find anything
+
+" TODO: Surround item with stuff plugin (example surround word with '')
+
+" TODO: Autocomplete words
