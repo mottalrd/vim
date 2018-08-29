@@ -150,4 +150,4 @@ nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\
 
 " TODO: Surround item with stuff plugin (example surround word with '')
 
-" TODO: Autocomplete words
+" TODO: Autocomplete with https://github.com/Valloric/YouCompleteMe
