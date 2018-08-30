@@ -116,7 +116,15 @@ let g:ctrlp_use_caching = 0
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
-command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+" https://vi.stackexchange.com/questions/14923/my-ag-shortcut-chokes-on-spaces
+" https://vi.stackexchange.com/questions/17206/how-to-keep-ag-the-silver-searcher-open-when-no-matches-are-found
+function! Ag(args) abort
+  execute "silent! grep!" shellescape(a:args)
+  copen
+  redraw!
+endfunction
+command! -nargs=+ -complete=file Ag call Ag(<q-args>)
 nnoremap \ :Ag<SPACE>
 
 " Better % to jump between keywords https://thoughtbot.com/upcase/videos/navigating-within-ruby-files
@@ -145,8 +153,6 @@ nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\
 " TODO: git plugin for blame / history
 
 " TODO: autosave https://github.com/vim-scripts/vim-auto-save
-
-" TODO: Ag do not close if you can't find anything
 
 " TODO: Surround item with stuff plugin (example surround word with '')
 
