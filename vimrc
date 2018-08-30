@@ -8,11 +8,18 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" To navigate files
 Plug 'scrooloose/nerdtree'
+" To quickly open a file
 Plug 'ctrlpvim/ctrlp.vim'
+" Editor theme
 Plug 'tomasr/molokai'
+" Run tests using hotkeys
 Plug 'janko-m/vim-test'
+" Better ruby awareness
 Plug 'vim-ruby/vim-ruby'
+" Better way to open the files from a quickfix window
+Plug 'yssl/QFEnter'
 
 " Initialize plugin system
 call plug#end()
@@ -141,6 +148,11 @@ nmap <leader>fa gg=G
 " Use :noh to then remove the highlight
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 
+" Store temporary files in a central spot
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
 " TODO: ctags
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 
@@ -148,12 +160,10 @@ nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\
 
 " TODO: try sessions https://github.com/xolox/vim-session
 
-" TODO: Ag to open in a vertical panel
-
 " TODO: git plugin for blame / history
 
 " TODO: autosave https://github.com/vim-scripts/vim-auto-save
 
 " TODO: Surround item with stuff plugin (example surround word with '')
 
-" TODO: Autocomplete words
+" TODO: Autocomplete with https://github.com/Valloric/YouCompleteMe
