@@ -105,7 +105,9 @@ nmap <leader>tn :TestNearest<CR>
 nmap <leader>tf :TestFile<CR>    
 nmap <leader>ts :TestSuite<CR>   
 nmap <leader>tl :TestLast<CR>    
-nmap <leader>tv :TestVisit<CR>   
+nmap <leader>tv :TestVisit<CR>
+" With binstubs there is a change that you might endup using Spring.
+let test#ruby#use_binstubs = 0
 
 " vim-test uses Vim8 Terminal to run test commands with term_start() in a split window.
 let test#strategy = "vimterminal"
