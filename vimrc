@@ -104,16 +104,17 @@ let NERDTreeShowHidden=1
 
 " vim-test mappings
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_macOS
-nmap <leader>tn :TestNearest<CR> 
+nmap <leader>tt :TestNearest<CR> 
 nmap <leader>tf :TestFile<CR>    
 nmap <leader>ts :TestSuite<CR>   
 nmap <leader>tl :TestLast<CR>    
 nmap <leader>tv :TestVisit<CR>
 " With binstubs there is a change that you might endup using Spring.
 let test#ruby#use_binstubs = 0
-
 " vim-test uses Vim8 Terminal to run test commands with term_start() in a split window.
 let test#strategy = "vimterminal"
+" Good in conjunction with vimterminal strategy to close the test
+nnoremap <leader>qq :bd#<CR>
 
 " Use ag over grep
 set grepprg=ag\ --nogroup\ --nocolor
