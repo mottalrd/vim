@@ -87,6 +87,9 @@ nnoremap <leader>q :ccl<CR>
 " Go back to terminal with leader space instead of Ctrl-Z
 nnoremap <leader><Space> <C-Z>
 
+" Remove highlight
+nnoremap h :nohl<CR>
+
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 nnoremap <Tab> >>_
 nnoremap <S-Tab> <<_
