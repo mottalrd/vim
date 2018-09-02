@@ -89,6 +89,9 @@ nnoremap <leader>q :ccl<CR>
 " Go back to terminal with leader space instead of Ctrl-Z
 nnoremap <leader><Space> <C-Z>
 
+" Delete current file
+nnoremap <leader>dd :call delete(expand('%')) \| bdelete!<CR>
+
 " Remove highlight
 nnoremap h :nohl<CR>
 
