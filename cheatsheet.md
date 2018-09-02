@@ -1,16 +1,20 @@
 # Move around
-* w - move ahead by word
-* b - move back by word
-* gg - move to top of file
-* :[n] - move to line n
-* :$ - go to last line
+* w / W - jump by start of words/with punctuation
+* e / E - jump to end of words/with punctuation
+* b / B - jump backward by words/with punctuation
+* 0 - (zero) start of line
+* ^ - first non-blank character of line
+* $ - end of line
+* G - Go to end of file
+* [n]gg - Go to beginning of file (or line n)
+Note: Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.
 
 # Insert character
-* i/I - start insert mode at cursor or beginning of line.
-* a/A - append after the cursor or at the end of the line.
-* o/O - open (append) blank line below or above current line (no need to press return)
+* i/I - start insert mode at cursor/beginning of line.
+* a/A - append after the cursor/at the end of the line.
+* o/O - open (append) blank line below/above current line (no need to press return)
 * ea - append at end of word
-* r/R - replace one or multiple chars
+* r/R - replace one/multiple chars
 
 # Windows movements
 * ctrl-w <direction> - Go to the other tab
@@ -19,10 +23,11 @@
 * :tabedit <filename> - Open new tab
 
 # Buffers
-* :buffers - see all buffers
+* :ls - see all buffers
 * :b# - open the previously editing buffer
-* :vert sb <num> - open buffer in vertical split. # for current buffer
+* :sb<num> - open buffer in split.
 * :bd - delete the buffer
+* Ctrl-o/i - jump to previous / next location
 
 # Execute commands
 * :! <your command string>
@@ -40,16 +45,6 @@
 
 # Configuration
 * vim -V9myVim.log - start vim and saves a log of everything it does in this file when you close
-
-# Cursor movement
-*  w / W - jump by start of words (punctuation considered words)
-* e / E - jump to end of words (punctuation considered words)
-* b / B - jump backward by words (punctuation considered words)
-* 0 - (zero) start of line
-* ^ - first non-blank character of line
-* $ - end of line
-* G - Go To command (prefix with number - 5G goes to line 5)
-Note: Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.
 
 # Editing
 * r - replace a single character (does not use insert mode)
