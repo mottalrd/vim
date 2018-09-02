@@ -20,11 +20,13 @@ Plug 'janko-m/vim-test'
 Plug 'vim-ruby/vim-ruby'
 " Better way to open the files from a quickfix window
 Plug 'yssl/QFEnter'
+" Buffer explorer
+Plug 'jlanzarotta/bufexplorer'
 
 " Initialize plugin system
 call plug#end()
 
-" Recognize the type of the file and set the 'filetype' option. 
+" Recognize the type of the file and set the 'filetype' option.
 " Can be used to set the syntax highlighting, set options, etc.
 filetype plugin indent on
 
@@ -35,11 +37,11 @@ set termguicolors
 colorscheme molokai
 
 " Tell vim how many columns a tab counts for
-set tabstop=2   
+set tabstop=2
 
 " Indentation with 2 spaces when using << or >>
 set shiftwidth=2
- 
+
 " Sets the number of columns for a TAB
 set softtabstop=2
 
@@ -52,7 +54,7 @@ set backspace=indent,eol,start
 " Enable mouse support
 set mouse=a
 
-" Enable clipboard on macosx 
+" Enable clipboard on macosx
 " http://www.markcampbell.me/2016/04/12/setting-up-yank-to-clipboard-on-a-mac-with-vim.html
 set clipboard=unnamed
 
@@ -102,12 +104,15 @@ nmap <leader>ne :NERDTree<cr>
 " Show hidden files
 let NERDTreeShowHidden=1
 
+" bufexplorer plugin <leader>be to choose a buffer to edit
+let g:bufExplorerDefaultHelp=0
+
 " vim-test mappings
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_macOS
-nmap <leader>tt :TestNearest<CR> 
-nmap <leader>tf :TestFile<CR>    
-nmap <leader>ts :TestSuite<CR>   
-nmap <leader>tl :TestLast<CR>    
+nmap <leader>tt :TestNearest<CR>
+nmap <leader>tf :TestFile<CR>
+nmap <leader>ts :TestSuite<CR>
+nmap <leader>tl :TestLast<CR>
 nmap <leader>tv :TestVisit<CR>
 " With binstubs there is a change that you might endup using Spring.
 let test#ruby#use_binstubs = 0
