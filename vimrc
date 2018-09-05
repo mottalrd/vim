@@ -22,6 +22,18 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'yssl/QFEnter'
 " Buffer explorer
 Plug 'jlanzarotta/bufexplorer'
+" Close buffer without losing the split
+Plug 'moll/vim-bbye'
+" Ctags for ruby projects
+" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
+" https://github.com/tpope/rbenv-ctags
+" https://github.com/tpope/gem-ctags
+" https://github.com/tpope/vim-bundler
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-bundler'
+Plug 'ivalkeen/vim-ctrlp-tjump'
 
 " Initialize plugin system
 call plug#end()
@@ -54,6 +66,10 @@ set backspace=indent,eol,start
 " Enable mouse support
 set mouse=a
 
+" https://stackoverflow.com/questions/307148/vim-scrolling-slowly
+" https://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
+set lazyredraw
+
 " Enable clipboard on macosx
 " http://www.markcampbell.me/2016/04/12/setting-up-yank-to-clipboard-on-a-mac-with-vim.html
 set clipboard=unnamed
@@ -66,38 +82,46 @@ set splitright
 let mapleader = ","
 
 " Avoid the escape key http://vim.wikia.com/wiki/Avoid_the_escape_key
-:imap jj <Esc>
+" Does not seem to work in nvim
+if !has('nvim')
+  :imap jj <Esc>
+endif
 
 " Copy to system clipboard
 " When mouse enabled (set mouse=a) hold the Alt key while
 " highlighting the text https://stackoverflow.com/a/4608387
-vmap <D-c> "+yi
-vmap <D-x> "+c
-vmap <D-v> c<ESC>"+p
-imap <D-v> <ESC>"+pa
+if !has('nvim')
+  vmap <D-c> "+yi
+  vmap <D-x> "+c
+  vmap <D-v> c<ESC>"+p
+  imap <D-v> <ESC>"+pa
+endif
 
-" Faster pane jump https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally
-" But more importantly remember <C-W> W goes to the opposite window
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" https://github.com/neovim/neovim/issues/2127
+" Reload buffer when changed on disk
+if has('nvim')
+  autocmd BufEnter,FocusGained * checktime
+endif
 
 " Close quickfix
-nnoremap <leader>q :ccl<CR>
+nnoremap <leader>qn :ccl<CR>
+
+" Close buffer without losing the split from vim-bbye plugin
+:nnoremap <Leader>qb :Bdelete<CR>
 
 " Go back to terminal with leader space instead of Ctrl-Z
 nnoremap <leader><Space> <C-Z>
 
 " Delete current file
-nnoremap <leader>dd :call delete(expand('%')) \| bdelete!<CR>
+nnoremap <leader>df :call delete(expand('%')) \| bdelete!<CR>
 
 " Remove highlight
 nnoremap h :nohl<CR>
 
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
-nnoremap <Tab> >>_
-nnoremap <S-Tab> <<_
+" In normal mode can't happen because it conflicts with Ctrl-i
+" nnoremap <Tab> >>_
+" nnoremap <S-Tab> <<_
 inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
@@ -112,7 +136,7 @@ let g:bufExplorerDefaultHelp=0
 
 " vim-test mappings
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_macOS
-nmap <leader>tt :TestNearest<CR>
+nmap <leader>tn :TestNearest<CR>
 nmap <leader>tf :TestFile<CR>
 nmap <leader>ts :TestSuite<CR>
 nmap <leader>tl :TestLast<CR>
@@ -120,9 +144,11 @@ nmap <leader>tv :TestVisit<CR>
 " With binstubs there is a change that you might endup using Spring.
 let test#ruby#use_binstubs = 0
 " vim-test uses Vim8 Terminal to run test commands with term_start() in a split window.
-let test#strategy = "vimterminal"
-" Good in conjunction with vimterminal strategy to close the test
-nnoremap <leader>qq :bd#<CR>
+if has('nvim')
+  let test#strategy = "neovim"
+else
+  let test#strategy = "vimterminal"
+endif
 
 " Use ag over grep
 set grepprg=ag\ --nogroup\ --nocolor
@@ -163,6 +189,7 @@ nmap <leader>fa gg=G
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 
 " QFEnter plugin for better open a quickfix window
+" Userful in conjuction with CtrlP such that it behaves in the same way
 let g:qfenter_keymap = {}
 let g:qfenter_keymap.vopen = ['<C-v>']
 let g:qfenter_keymap.hopen = ['<C-CR>', '<C-s>', '<C-x>']
@@ -173,21 +200,43 @@ set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
-" Remap for easy cycling between buffers
-nnoremap <tab> :bn<CR>
-nnoremap <s-tab> :bp<CR>
+" Go to a previous location
+function! GotoJump()
+  jumps
+  let j = input("Please select your jump: ")
+  if j != ''
+    let pattern = '\v\c^\+'
+    if j =~ pattern
+      let j = substitute(j, pattern, '', 'g')
+      execute "normal " . j . "\<c-i>"
+    else
+      execute "normal " . j . "\<c-o>"
+    endif
+  endif
+endfunction
+nmap <Leader>j :call GotoJump()<CR>
 
-" TODO: ctags
+" Reload ctags
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
+set tags+=.tags
+nnoremap <leader>ct :silent ! ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
 
 " TODO: fold / unfold code
 
 " TODO: try sessions https://github.com/xolox/vim-session
 
-" TODO: git plugin for blame / history
+" TODO: git plugin for blame / history git-fugitive
 
 " TODO: autosave https://github.com/vim-scripts/vim-auto-save
 
 " TODO: Surround item with stuff plugin (example surround word with '')
 
 " TODO: Autocomplete with https://github.com/Valloric/YouCompleteMe
+
+" TODO: faster ctrlp https://bluz71.github.io/2017/10/26/turbocharge-the-ctrlp-vim-plugin.html
+
+" TODO: Bdelete closing the window
+
+" TODO: Ag not searching in .env files
+
+" TODO: nvim not warning me of changed file

@@ -18,8 +18,9 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 
 # Windows movements
 * ctrl-w <direction> - Go to the other tab
+* ctrl-w r - Reverse buffers (switch side)
+* ctrl-w c - Close window (without losing the buffers)
 * :vs <filename> - Open new file in vertical
-* ctrl-w r - Switch buffers (or :wincmd r)
 * :tabedit <filename> - Open new tab
 
 # Buffers
