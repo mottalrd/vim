@@ -24,6 +24,10 @@ Plug 'yssl/QFEnter'
 Plug 'jlanzarotta/bufexplorer'
 " Close buffer without losing the split
 Plug 'moll/vim-bbye'
+" Surround a piece of text
+Plug 'tpope/vim-surround'
+" Autosave plugin
+Plug 'vim-scripts/vim-auto-save'
 " Ctags for ruby projects
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/rbenv-ctags
@@ -45,6 +49,9 @@ filetype plugin indent on
 " Enable syntaxt detection based on the file type
 syntax on
 
+" Line numbers enabled
+set number
+
 set termguicolors
 colorscheme molokai
 
@@ -60,11 +67,20 @@ set softtabstop=2
 " Expand TABs to spaces
 set expandtab
 
+" Folds always open by default
+" http://vim.wikia.com/wiki/All_folds_open_when_opening_a_file
+set foldmethod=indent
+set foldlevel=20
+
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
 
 " Enable mouse support
 set mouse=a
+
+" Save automatically when text is changed with vim-auto-save
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
 
 " https://stackoverflow.com/questions/307148/vim-scrolling-slowly
 " https://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
@@ -116,7 +132,12 @@ nnoremap <leader><Space> <C-Z>
 nnoremap <leader>df :call delete(expand('%')) \| bdelete!<CR>
 
 " Remove highlight
-nnoremap h :nohl<CR>
+nnoremap <leader>h :nohl<CR>
+
+" Easier folding
+nnoremap <leader>af zM
+nnoremap <leader>ad zR
+nnoremap <leader>aa za
 
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 " In normal mode can't happen because it conflicts with Ctrl-i
@@ -133,6 +154,7 @@ let NERDTreeShowHidden=1
 
 " bufexplorer plugin <leader>be to choose a buffer to edit
 let g:bufExplorerDefaultHelp=0
+let g:bufExplorerShowRelativePath=1
 
 " vim-test mappings
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_macOS
@@ -221,22 +243,22 @@ nmap <Leader>j :call GotoJump()<CR>
 set tags+=.tags
 nnoremap <leader>ct :silent ! ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
 
-" TODO: fold / unfold code
+" vim-ruby configuration
+let ruby_fold = 1
+let ruby_foldable_groups = 'def do'
+let ruby_spellcheck_strings = 1
 
 " TODO: try sessions https://github.com/xolox/vim-session
 
 " TODO: git plugin for blame / history git-fugitive
 
-" TODO: autosave https://github.com/vim-scripts/vim-auto-save
-
 " TODO: Surround item with stuff plugin (example surround word with '')
 
 " TODO: Autocomplete with https://github.com/Valloric/YouCompleteMe
-
-" TODO: faster ctrlp https://bluz71.github.io/2017/10/26/turbocharge-the-ctrlp-vim-plugin.html
 
 " TODO: Bdelete closing the window
 
 " TODO: Ag not searching in .env files
 
-" TODO: nvim not warning me of changed file
+" TODO: Reverse search with K opening two windows
+

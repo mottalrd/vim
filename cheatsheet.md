@@ -22,6 +22,7 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * ctrl-w c - Close window (without losing the buffers)
 * :vs <filename> - Open new file in vertical
 * :tabedit <filename> - Open new tab
+* gt/gT - Switch between tabs
 
 # Buffers
 * :ls - see all buffers
@@ -43,6 +44,14 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 
 # Navigating Ruby
 * [m or ]m to jump between methods
+
+# Folding
+* zi - switch folding on or off
+* za - toggle current fold open/closed (<leader>aa)
+* zc - close current fold
+* zR - open all folds (<leader>ad)
+* zM - close all folds (<leader>af)
+* zv - expand folds to reveal cursor
 
 # Configuration
 * vim -V9myVim.log - start vim and saves a log of everything it does in this file when you close
@@ -109,4 +118,3 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * ctrl+ww - switch between windows
 * ctrl+wq - Quit a window
 * ctrl+wv - Split windows vertically
-
