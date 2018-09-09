@@ -128,8 +128,10 @@ nnoremap <leader>qn :ccl<CR>
 " Go back to terminal with leader space instead of Ctrl-Z
 nnoremap <leader><Space> <C-Z>
 
-" Delete current file
-nnoremap <leader>df :call delete(expand('%')) \| bdelete!<CR>
+" Delete current file https://stackoverflow.com/questions/4465095/vim-delete-buffer-without-losing-the-split-window
+" Go to the previous buffer, then remove it from the disk (# is a
+" reference to the buffer we just left), and then from the buffers list
+nnoremap <leader>df :bp \| :call delete(expand('#')) \| :bd!\#<CR>
 
 " Remove highlight
 nnoremap <leader>h :nohl<CR>
