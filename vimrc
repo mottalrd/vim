@@ -24,10 +24,17 @@ Plug 'yssl/QFEnter'
 Plug 'jlanzarotta/bufexplorer'
 " Close buffer without losing the split
 Plug 'moll/vim-bbye'
-" Surround a piece of text
+" Surround a piece of text 
 Plug 'tpope/vim-surround'
 " Autosave plugin
 Plug 'vim-scripts/vim-auto-save'
+" Git plugin to issue vim commands
+Plug 'tpope/vim-fugitive'
+" Git plugin to show git changes
+Plug 'airblade/vim-gitgutter'
+" Save the vim session
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 " Ctags for ruby projects
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/rbenv-ctags
@@ -78,9 +85,19 @@ set backspace=indent,eol,start
 " Enable mouse support
 set mouse=a
 
+" Autocompletion sources
+" https://robots.thoughtbot.com/vim-you-complete-me
+set complete=.,b,u,]
+
 " Save automatically when text is changed with vim-auto-save
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
+
+" vim-session configuration
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
+let g:session_directory = "./" 
+let g:session_default_name = "session"
 
 " https://stackoverflow.com/questions/307148/vim-scrolling-slowly
 " https://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
@@ -123,7 +140,7 @@ endif
 nnoremap <leader>qn :ccl<CR>
 
 " Close buffer without losing the split from vim-bbye plugin
-:nnoremap <Leader>qb :Bdelete<CR>
+nnoremap <Leader>qb :Bdelete<CR>
 
 " Go back to terminal with leader space instead of Ctrl-Z
 nnoremap <leader><Space> <C-Z>
@@ -141,13 +158,21 @@ nnoremap <leader>af zM
 nnoremap <leader>ad zR
 nnoremap <leader>aa za
 
+" Quick git commands
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gd :Gdiff<CR>
+
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 " In normal mode can't happen because it conflicts with Ctrl-i
 " nnoremap <Tab> >>_
 " nnoremap <S-Tab> <<_
-inoremap <S-Tab> <C-D>
+" inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
+
+" Provides suggestions for next word
+imap <Tab> <C-P>
 
 " Quickly open nerdtree https://stackoverflow.com/questions/6467634/create-a-command-shortcut-for-nerdtree-in-vim-editor
 nmap <leader>ne :NERDTree<cr>
@@ -175,7 +200,7 @@ else
 endif
 
 " Use ag over grep
-set grepprg=ag\ --nogroup\ --nocolor
+set grepprg=ag\ --nogroup\ --nocolor\ --hidden
 
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
@@ -184,7 +209,7 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_use_caching = 0
 
 " bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :silent! grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
 " https://robots.thoughtbot.com/faster-grepping-in-vim
@@ -249,18 +274,4 @@ nnoremap <leader>ct :silent ! ctags -R --languages=ruby --exclude=.git --exclude
 let ruby_fold = 1
 let ruby_foldable_groups = 'def do'
 let ruby_spellcheck_strings = 1
-
-" TODO: try sessions https://github.com/xolox/vim-session
-
-" TODO: git plugin for blame / history git-fugitive
-
-" TODO: Surround item with stuff plugin (example surround word with '')
-
-" TODO: Autocomplete with https://github.com/Valloric/YouCompleteMe
-
-" TODO: Bdelete closing the window
-
-" TODO: Ag not searching in .env files
-
-" TODO: Reverse search with K opening two windows
 

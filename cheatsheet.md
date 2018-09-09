@@ -41,9 +41,11 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * <ctrl-p> + <ctrl-v> to open file in vertical split (ctrlp plugin)
 * :ccl[ose] or :cope[n] to open/close the quick fix window
 * % to jump between matching parentesis
+* S<char> - in visual mode surround code with <char> using vim-surround
 
-# Navigating Ruby
-* [m or ]m to jump between methods
+# Autocompletion
+* ctrl-p - to complete a word (remapped to tab)
+* ctrl-x ctrl-l - to complete a line
 
 # Folding
 * zi - switch folding on or off
@@ -118,3 +120,4 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * ctrl+ww - switch between windows
 * ctrl+wq - Quit a window
 * ctrl+wv - Split windows vertically
+

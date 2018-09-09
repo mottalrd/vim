@@ -3,3 +3,5 @@ colors
 autoload
 *.swp
 .tags
+sessions
+session.vim
