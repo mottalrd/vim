@@ -167,12 +167,12 @@ nnoremap <leader>gd :Gdiff<CR>
 " In normal mode can't happen because it conflicts with Ctrl-i
 " nnoremap <Tab> >>_
 " nnoremap <S-Tab> <<_
-" inoremap <S-Tab> <C-D>
+inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 " Provides suggestions for next word
-imap <Tab> <C-P>
+imap <C-Space> <C-P>
 
 " Quickly open nerdtree https://stackoverflow.com/questions/6467634/create-a-command-shortcut-for-nerdtree-in-vim-editor
 nmap <leader>ne :NERDTree<cr>
@@ -274,4 +274,7 @@ nnoremap <leader>ct :silent ! ctags -R --languages=ruby --exclude=.git --exclude
 let ruby_fold = 1
 let ruby_foldable_groups = 'def do'
 let ruby_spellcheck_strings = 1
+
+" Reveal the negative diff
+nmap <Leader>gh <Plug>GitGutterPreviewHunk
 
