@@ -23,6 +23,9 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * :vs <filename> - Open new file in vertical
 * :tabedit <filename> - Open new tab
 * gt/gT - Switch between tabs
+* ctrl-w = - Resize all windows to be the same size
+* ctrl-w num< or num> - Resize width left/right
+* ctrl-w num+ or num- - Resize height left/right
 
 # Buffers
 * :ls - see all buffers
@@ -30,6 +33,7 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * :sb<num> - open buffer in split.
 * :bd - delete the buffer
 * Ctrl-o/i - jump to previous / next location
+* bufdo bd - close all buffers
 
 # Execute commands
 * :! <your command string>

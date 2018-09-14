@@ -148,7 +148,7 @@ nnoremap <leader><Space> <C-Z>
 " Delete current file https://stackoverflow.com/questions/4465095/vim-delete-buffer-without-losing-the-split-window
 " Go to the previous buffer, then remove it from the disk (# is a
 " reference to the buffer we just left), and then from the buffers list
-nnoremap <leader>df :bp \| :call delete(expand('#')) \| :bd!\#<CR>
+nnoremap <leader>df :bp \| :call delete(expand('#')) \| :bd!#<CR>
 
 " Remove highlight
 nnoremap <leader>h :nohl<CR>
@@ -162,6 +162,7 @@ nnoremap <leader>aa za
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gr :GitGutterUndoHunk<CR>
 
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 " In normal mode can't happen because it conflicts with Ctrl-i
@@ -275,6 +276,10 @@ let ruby_fold = 1
 let ruby_foldable_groups = 'def do'
 let ruby_spellcheck_strings = 1
 
+" vim-rails hotkey to jump from file to its test
+nnoremap <leader>tj :AV<CR>
+
 " Reveal the negative diff
 nmap <Leader>gh <Plug>GitGutterPreviewHunk
 
+" TODO: Better ruby ctags
