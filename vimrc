@@ -96,8 +96,7 @@ let g:auto_save_in_insert_mode = 0
 " vim-session configuration
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
-let g:session_directory = "./" 
-let g:session_default_name = "session"
+let g:session_directory = ".vim-session" 
 
 " https://stackoverflow.com/questions/307148/vim-scrolling-slowly
 " https://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
@@ -283,3 +282,4 @@ nnoremap <leader>tj :AV<CR>
 nmap <Leader>gh <Plug>GitGutterPreviewHunk
 
 " TODO: Better ruby ctags
+" TODO: delete up to end of line https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
