@@ -48,8 +48,17 @@ Plug 'tpope/vim-bundler'
 Plug 'ivalkeen/vim-ctrlp-tjump'
 " Use ctrlp to jump between functions
 Plug 'tacahiroy/ctrlp-funky'
+" Use ctrlp with Ag to search
+Plug 'lokikl/vim-ctrlp-ag'
+" Open directory in nerd-tree using ctrlp
+Plug 'voronkovich/ctrlp-nerdtree.vim'
+" Navigate jumps with ctrlp
+Plug 'DeaR/ctrlp-jumps'
+" Use registers in ctrl-p
+Plug 'mattn/ctrlp-register'
 " Easily select parts of a line
 " https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
+Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 
 " Initialize plugin system
@@ -185,9 +194,12 @@ vnoremap <S-Tab> <gv
 imap <C-Space> <C-P>
 
 " Quickly open nerdtree https://stackoverflow.com/questions/6467634/create-a-command-shortcut-for-nerdtree-in-vim-editor
-nmap <leader>ne :NERDTree<cr>
+" Also with ctrlp-nerdtree plugin for search
+nnoremap <leader>ne :NERDTree<cr>
+nnoremap <leader>nf :CtrlPNerdTree<cr>
 " Show hidden files
 let NERDTreeShowHidden=1
+let g:ctrlp_nerdtree_show_hidden = 1
 
 " bufexplorer plugin <leader>be to choose a buffer to edit
 let g:bufExplorerDefaultHelp=0
@@ -209,11 +221,19 @@ else
   let test#strategy = "vimterminal"
 endif
 
+" vim-ctrlp-ag configuration already does the following
 " Use ag over grep
-set grepprg=ag\ --nogroup\ --nocolor\ --hidden
-
+" set grepprg=ag\ --nogroup\ --nocolor\ --hidden
 " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+nnoremap <c-f> :CtrlPag<cr>
+vnoremap <c-f> :CtrlPagVisual<cr>
+nnoremap <leader>ca :CtrlPagLocate
+nnoremap <leader>cp :CtrlPagPrevious<cr>
+let g:ctrlp_ag_ignores = '--ignore .git
+    \ --ignore "deps/*"
+    \ --ignore "_build/*"
+    \ --ignore "node_modules/*"'
 
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
@@ -263,20 +283,9 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " Go to a previous location
-function! GotoJump()
-  jumps
-  let j = input("Please select your jump: ")
-  if j != ''
-    let pattern = '\v\c^\+'
-    if j =~ pattern
-      let j = substitute(j, pattern, '', 'g')
-      execute "normal " . j . "\<c-i>"
-    else
-      execute "normal " . j . "\<c-o>"
-    endif
-  endif
-endfunction
-nmap <Leader>bj :call GotoJump()<CR>
+nnoremap <leader>j :CtrlPJump<cr>
+" Search withing the registers
+nnoremap <leader>r :CtrlPRegister<cr>
 
 " Specify tags file for VIM
 set tags+=.tags
