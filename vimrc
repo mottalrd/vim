@@ -44,7 +44,13 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
+" Use ctrlp to jump between tags
 Plug 'ivalkeen/vim-ctrlp-tjump'
+" Use ctrlp to jump between functions
+Plug 'tacahiroy/ctrlp-funky'
+" Easily select parts of a line
+" https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
+Plug 'kana/vim-textobj-line'
 
 " Initialize plugin system
 call plug#end()
@@ -162,6 +168,10 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gr :GitGutterUndoHunk<CR>
+nnoremap <Leader>gh <Plug>GitGutterPreviewHunk
+
+" Add a binding.pry
+nnoremap <leader>s ibinding.pry<Esc>
 
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 " In normal mode can't happen because it conflicts with Ctrl-i
@@ -208,6 +218,9 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
 
+" Search for tags using ctrlp (:help ctrlp-extensions)
+" let g:ctrlp_extensions = ['tag']
+
 " bind K to grep word under cursor
 nnoremap K :silent! grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
@@ -230,8 +243,8 @@ runtime macros/matchit.vim
 nnoremap <space> i<space><esc>
 
 " Hotkey to reformat code
-nmap <leader>ff =i{
-nmap <leader>fa gg=G
+" https://stackoverflow.com/questions/24671367/vim-keybinding-to-jump-back-to-initial-position-after-indenting-the-whole-file
+nmap <leader>ff Hgg=G2<C-o>zt<C-o>
 
 " Highlight word when double clicked
 " Use :noh to then remove the highlight
@@ -263,12 +276,18 @@ function! GotoJump()
     endif
   endif
 endfunction
-nmap <Leader>j :call GotoJump()<CR>
+nmap <Leader>bj :call GotoJump()<CR>
 
-" Reload ctags
-" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
+" Specify tags file for VIM
 set tags+=.tags
-nnoremap <leader>ct :silent ! ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
+
+" Create ctags using Exuberant Ctags
+" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
+" https://github.com/universal-ctags/ctags/issues/446 as an alternative
+" ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
+
+" Ctags using the ruby-specific https://github.com/tmm1/ripper-tags
+nnoremap <leader>ct :silent ! ripper-tags -R --exclude=vendor --exclude=log<cr>
 
 " vim-ruby configuration
 let ruby_fold = 1
@@ -278,8 +297,11 @@ let ruby_spellcheck_strings = 1
 " vim-rails hotkey to jump from file to its test
 nnoremap <leader>tj :AV<CR>
 
-" Reveal the negative diff
-nmap <Leader>gh <Plug>GitGutterPreviewHunk
+" Cool ctags navigation with vim-ctrlp-tjump
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+let g:ctrlp_tjump_only_silent = 1
 
-" TODO: Better ruby ctags
-" TODO: delete up to end of line https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
+" Jump between functions using ctrlp
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+

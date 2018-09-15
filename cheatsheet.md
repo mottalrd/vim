@@ -26,6 +26,8 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * ctrl-w = - Resize all windows to be the same size
 * ctrl-w num< or num> - Resize width left/right
 * ctrl-w num+ or num- - Resize height left/right
+* :ccl[ose] or :cope[n] to open/close the quick fix window
+* <ctrl-p> + <ctrl-v> to open file in vertical split (ctrlp plugin)
 
 # Buffers
 * :ls - see all buffers
@@ -40,10 +42,9 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * ctrl-z - go back to bash
 * fg <id> - go back to VIM (resume the background process started with ctrl-z)
 
-# Code navigation/editing
-* gg=G indent all the file
-* <ctrl-p> + <ctrl-v> to open file in vertical split (ctrlp plugin)
-* :ccl[ose] or :cope[n] to open/close the quick fix window
+# Code navigation
+* <ctrl-]> to jump to definition (or g<ctrl-]> to choose the jump)
+* gg=G indent all the file (mapped to <leader>fa)
 * % to jump between matching parentesis
 * S<char> - in visual mode surround code with <char> using vim-surround
 
@@ -58,9 +59,6 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * zR - open all folds (<leader>ad)
 * zM - close all folds (<leader>af)
 * zv - expand folds to reveal cursor
-
-# Configuration
-* vim -V9myVim.log - start vim and saves a log of everything it does in this file when you close
 
 # Editing
 * r - replace a single character (does not use insert mode)
@@ -124,4 +122,7 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * ctrl+ww - switch between windows
 * ctrl+wq - Quit a window
 * ctrl+wv - Split windows vertically
+
+# Debugging VIM
+* vim -V9myVim.log - start vim and saves a log of everything it does in this file when you close
 
