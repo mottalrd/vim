@@ -314,3 +314,7 @@ let g:ctrlp_tjump_only_silent = 1
 " Jump between functions using ctrlp
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 
+" TODO: Try to add syntaxt checking https://vimawesome.com/plugin/syntastic
+" TODO: Autocomplete for end keyword https://github.com/tpope/vim-endwise
+" TODO: Auto-add closing quotes/parenthesis/etc https://github.com/Raimondi/delimitMate
+
