@@ -35,11 +35,7 @@ Plug 'airblade/vim-gitgutter'
 " Save the vim session
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-" Ctags for ruby projects
-" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
-" https://github.com/tpope/rbenv-ctags
-" https://github.com/tpope/gem-ctags
-" https://github.com/tpope/vim-bundler
+" Ruby specific support plugins
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
@@ -316,3 +312,8 @@ let g:ctrlp_tjump_only_silent = 1
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 
 " TODO: Try to add syntaxt checking https://vimawesome.com/plugin/syntastic
+" TODO: Do I need gem-ctags and rbenv-ctags?
+" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
+" https://github.com/tpope/rbenv-ctags
+" https://github.com/tpope/gem-ctags
+
