@@ -318,4 +318,5 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/rbenv-ctags
 " https://github.com/tpope/gem-ctags
-
+" TODO: Try yank ring to remember old yanks
+" https://github.com/vim-scripts/YankRing.vim
