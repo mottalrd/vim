@@ -35,11 +35,7 @@ Plug 'airblade/vim-gitgutter'
 " Save the vim session
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-" Ctags for ruby projects
-" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
-" https://github.com/tpope/rbenv-ctags
-" https://github.com/tpope/gem-ctags
-" https://github.com/tpope/vim-bundler
+" Ruby specific support plugins
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
@@ -177,10 +173,10 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gr :GitGutterUndoHunk<CR>
-nnoremap <Leader>gh <Plug>GitGutterPreviewHunk
+nnoremap <leader>gh :GitGutterPreviewHunk<CR>
 
 " Add a binding.pry
-nnoremap <leader>s ibinding.pry<Esc>
+nnoremap <leader>s <S-O>binding.pry<Esc>
 
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 " In normal mode can't happen because it conflicts with Ctrl-i
@@ -233,7 +229,8 @@ nnoremap <leader>cp :CtrlPagPrevious<cr>
 let g:ctrlp_ag_ignores = '--ignore .git
     \ --ignore "deps/*"
     \ --ignore "_build/*"
-    \ --ignore "node_modules/*"'
+    \ --ignore "node_modules/*"
+    \ --ignore "tags"'
 
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
@@ -264,7 +261,7 @@ nnoremap <space> i<space><esc>
 
 " Hotkey to reformat code
 " https://stackoverflow.com/questions/24671367/vim-keybinding-to-jump-back-to-initial-position-after-indenting-the-whole-file
-nmap <leader>ff Hgg=G2<C-o>zt<C-o>
+nnoremap <leader>fa gg=G
 
 " Highlight word when double clicked
 " Use :noh to then remove the highlight
@@ -317,4 +314,8 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 " TODO: Try to add syntaxt checking https://vimawesome.com/plugin/syntastic
 " TODO: Autocomplete for end keyword https://github.com/tpope/vim-endwise
 " TODO: Auto-add closing quotes/parenthesis/etc https://github.com/Raimondi/delimitMate
+" TODO: Do I need gem-ctags and rbenv-ctags?
+" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
+" https://github.com/tpope/rbenv-ctags
+" https://github.com/tpope/gem-ctags
 
