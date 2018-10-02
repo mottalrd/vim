@@ -60,6 +60,11 @@ Plug 'kana/vim-textobj-line'
 " Initialize plugin system
 call plug#end()
 
+" Call on custom plugin options from an external file
+if filereadable(expand("~/.vim/vimrc.functions"))
+  source ~/.vim/vimrc.functions
+endif
+
 " Recognize the type of the file and set the 'filetype' option.
 " Can be used to set the syntax highlighting, set options, etc.
 filetype plugin indent on
@@ -314,39 +319,11 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 " Set a nicer foldtext function
 set foldtext=MyFoldText()
 highlight Folded guibg=black guifg=yellow
-function! MyFoldText()
-  let line = getline(v:foldstart)
-  if match( line, '^[ \t]*\(\/\*\|\/\/\)[*/\\]*[ \t]*$' ) == 0
-    let initial = substitute( line, '^\([ \t]\)*\(\/\*\|\/\/\)\(.*\)', '\1\2', '' )
-    let linenum = v:foldstart + 1
-    while linenum < v:foldend
-      let line = getline( linenum )
-      let comment_content = substitute( line, '^\([ \t\/\*]*\)\(.*\)$', '\2', 'g' )
-      if comment_content != ''
-        break
-      endif
-      let linenum = linenum + 1
-    endwhile
-    let sub = initial . ' ' . comment_content
-  else
-    let sub = line
-    let startbrace = substitute( line, '^.*{[ \t]*$', '{', 'g')
-    if startbrace == '{'
-      let line = getline(v:foldend)
-      let endbrace = substitute( line, '^[ \t]*}\(.*\)$', '}', 'g')
-      if endbrace == '}'
-        let sub = sub.substitute( line, '^[ \t]*}\(.*\)$', '...}\1', 'g')
-      endif
-    endif
-  endif
-  let n = v:foldend - v:foldstart + 1
-  let info = " " . n . " lines"
-  let sub = sub . "                                                                                                                  "
-  let num_w = getwinvar( 0, '&number' ) * getwinvar( 0, '&numberwidth' )
-  let fold_w = getwinvar( 0, '&foldcolumn' )
-  let sub = strpart( sub, 0, winwidth(0) - strlen( info ) - num_w - fold_w - 1 )
-  return sub . info
-endfunction
+
+" Please, no Spring in Rails. 
+" Ideally that would be loaded from the bash, but for some reason it does not.
+" https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
+let $DISABLE_SPRING=1
 
 " TODO: Try to add syntaxt checking https://vimawesome.com/plugin/syntastic
 " TODO: Autocomplete for end keyword https://github.com/tpope/vim-endwise
