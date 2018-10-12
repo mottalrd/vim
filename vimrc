@@ -56,6 +56,8 @@ Plug 'mattn/ctrlp-register'
 " https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
+" Easily create scratch windows
+Plug 'mtth/scratch.vim'
 
 " Initialize plugin system
 call plug#end()
