@@ -30,6 +30,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/vim-auto-save'
 " Git plugin to issue vim commands
 Plug 'tpope/vim-fugitive'
+" Goes with vim fugitive to open commits on github
+Plug 'tpope/vim-rhubarb'
 " Git plugin to show git changes
 Plug 'airblade/vim-gitgutter'
 " Save the vim session
