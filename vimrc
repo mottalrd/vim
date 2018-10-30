@@ -338,3 +338,7 @@ let $DISABLE_SPRING=1
 " https://github.com/tpope/gem-ctags
 " TODO: Try yank ring to remember old yanks
 " https://github.com/vim-scripts/YankRing.vim
+" TODO: Show indentation levels
+" https://github.com/nathanaelkane/vim-indent-guides
+" TODO: Working with HAML using vim-haml Tim Pope
+" https://stackoverflow.com/questions/1639606/how-do-i-install-a-plugin-for-vim
