@@ -133,12 +133,6 @@ set splitright
 " Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
 let mapleader = ","
 
-" Avoid the escape key http://vim.wikia.com/wiki/Avoid_the_escape_key
-" Does not seem to work in nvim
-if !has('nvim')
-  :imap jj <Esc>
-endif
-
 " Copy to system clipboard
 " When mouse enabled (set mouse=a) hold the Alt key while
 " highlighting the text https://stackoverflow.com/a/4608387
