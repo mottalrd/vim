@@ -149,6 +149,13 @@ if has('nvim')
   autocmd BufEnter,FocusGained * checktime
 endif
 
+" Easier way to exit terminal mode in nvim
+" http://vimcasts.org/episodes/neovim-terminal-mappings/
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+endif
+
 " Close quickfix
 nnoremap <leader>qn :ccl<CR>
 
