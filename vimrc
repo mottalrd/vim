@@ -324,6 +324,10 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 set foldtext=MyFoldText()
 highlight Folded guibg=black guifg=yellow
 
+" Set prettier as a formatter for Javascript
+" https://hackernoon.com/5-vim-plugins-i-cant-live-without-for-javascript-development-f7e98f98e8d5
+autocmd FileType javascript set formatprg=prettier\ --stdin
+
 " Please, no Spring in Rails. 
 " Ideally that would be loaded from the bash, but for some reason it does not.
 " https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
