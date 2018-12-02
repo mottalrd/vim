@@ -116,6 +116,10 @@ vmap <C-k> gk
 nmap <C-j> gj
 nmap <C-k> gk
 
+" Use par for text formatting (use gqip to format your paragraph)
+" http://vimcasts.org/episodes/formatting-text-with-par/
+set formatprg=par
+
 " Save automatically when text is changed with vim-auto-save
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
