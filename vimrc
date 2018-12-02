@@ -109,6 +109,13 @@ set mouse=a
 " https://robots.thoughtbot.com/vim-you-complete-me
 set complete=.,b,u,]
 
+" More intuitive movement on softwrap
+" http://vimcasts.org/episodes/soft-wrapping-text/
+vmap <C-j> gj
+vmap <C-k> gk
+nmap <C-j> gj
+nmap <C-k> gk
+
 " Save automatically when text is changed with vim-auto-save
 let g:auto_save = 1
 let g:auto_save_in_insert_mode = 0
