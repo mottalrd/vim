@@ -105,6 +105,9 @@ set backspace=indent,eol,start
 " Enable mouse support
 set mouse=a
 
+" Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
+let mapleader = ","
+
 " Autocompletion sources
 " https://robots.thoughtbot.com/vim-you-complete-me
 set complete=.,b,u,]
@@ -141,8 +144,8 @@ set clipboard=unnamed
 set splitbelow
 set splitright
 
-" Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
-let mapleader = ","
+" http://vimcasts.org/episodes/spell-checking/
+nmap <silent> <leader>r :set spell!<CR>
 
 " Copy to system clipboard
 " When mouse enabled (set mouse=a) hold the Alt key while
