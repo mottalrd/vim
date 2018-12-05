@@ -60,6 +60,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 " Easily create scratch windows
 Plug 'mtth/scratch.vim'
+" Copy file path
+Plug 'mottalrd/copypath.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -146,6 +148,10 @@ set splitright
 
 " http://vimcasts.org/episodes/spell-checking/
 nmap <silent> <leader>r :set spell!<CR>
+
+" Copy path to unnamed register
+" https://github.com/vim-scripts/copypath.vim/blob/master/plugin/copypath.vim
+let g:copypath_copy_to_unnamed_register = 1
 
 " Copy to system clipboard
 " When mouse enabled (set mouse=a) hold the Alt key while
