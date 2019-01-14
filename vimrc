@@ -62,6 +62,8 @@ Plug 'kana/vim-textobj-line'
 Plug 'mtth/scratch.vim'
 " Copy file path
 Plug 'mottalrd/copypath.vim'
+" Add comments
+Plug 'tpope/vim-commentary'
 
 " Initialize plugin system
 call plug#end()
