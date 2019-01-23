@@ -136,11 +136,13 @@ function EnableWriting()
   set textwidth=72 " Default of par
   set formatoptions+=t
   highlight Normal guifg=#a3a3a3 guibg=Black
+  set spell spelllang=en_us
 endfunction
 
 function DisableWriting() abort
   set textwidth=0
   set formatoptions=tcqj
+  set nospell
 endfunction
 
 command DisableWriting :call DisableWriting()
