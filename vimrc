@@ -125,7 +125,26 @@ nmap <C-k> gk
 
 " Use par for text formatting (use gqip to format your paragraph)
 " http://vimcasts.org/episodes/formatting-text-with-par/
-set formatprg=par
+set formatprg=par\ -q
+
+" http://vim.wikia.com/wiki/Dictionary_completions
+" Complete dictionary with Ctrl-N
+set complete+=k
+set dictionary+=/usr/share/dict/words
+
+function EnableWriting()
+  set textwidth=72 " Default of par
+  set formatoptions+=t
+  highlight Normal guifg=#a3a3a3 guibg=Black
+endfunction
+
+function DisableWriting() abort
+  set textwidth=0
+  set formatoptions=tcqj
+endfunction
+
+command DisableWriting :call DisableWriting()
+command EnableWriting :call EnableWriting()
 
 " Save automatically when text is changed with vim-auto-save
 let g:auto_save = 1
