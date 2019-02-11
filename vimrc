@@ -64,6 +64,11 @@ Plug 'mtth/scratch.vim'
 Plug 'mottalrd/copypath.vim'
 " Add comments
 Plug 'tpope/vim-commentary'
+" Copy RTF for presentation
+" Plug 'zerowidth/vim-copy-as-rtf'
+" Didn't work but can use the following
+" :TOhtml command and then
+" textutil -convert rtf -stdout <html_file> | pbcopy
 
 " Initialize plugin system
 call plug#end()
