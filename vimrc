@@ -103,6 +103,9 @@ set softtabstop=2
 " Expand TABs to spaces
 set expandtab
 
+" Enable bottom right numbers
+set ruler
+
 " Folds always open by default
 " http://vim.wikia.com/wiki/All_folds_open_when_opening_a_file
 set foldmethod=indent
