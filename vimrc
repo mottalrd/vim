@@ -64,6 +64,9 @@ Plug 'mtth/scratch.vim'
 Plug 'mottalrd/copypath.vim'
 " Add comments
 Plug 'tpope/vim-commentary'
+" Visualise undo tree
+Plug 'mbbill/undotree'
+
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
 " Didn't work but can use the following
@@ -398,3 +401,6 @@ let $DISABLE_SPRING=1
 " https://github.com/nathanaelkane/vim-indent-guides
 " TODO: Working with HAML using vim-haml Tim Pope
 " https://stackoverflow.com/questions/1639606/how-do-i-install-a-plugin-for-vim
+" TODO: Make tables aligned with
+" https://github.com/godlygeek/tabular
+" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/

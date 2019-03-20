@@ -5,3 +5,4 @@ autoload
 .tags
 sessions
 session.vim
+spell
