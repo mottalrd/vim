@@ -243,8 +243,9 @@ nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gr :GitGutterUndoHunk<CR>
 nnoremap <leader>gh :GitGutterPreviewHunk<CR>
 
-" Add a binding.pry
-nnoremap <leader>s <S-O>binding.pry<Esc>
+" Add a binding.pry or debugger for JS
+autocmd FileType ruby nnoremap <leader>s <S-O>binding.pry<Esc>
+autocmd FileType javascript nnoremap <leader>s <S-O>debugger<Esc>
 
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 " In normal mode can't happen because it conflicts with Ctrl-i
