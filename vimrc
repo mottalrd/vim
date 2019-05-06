@@ -136,6 +136,7 @@ nmap <C-k> gk
 
 " Use par for text formatting (use gqip to format your paragraph)
 " http://vimcasts.org/episodes/formatting-text-with-par/
+" Format the text you want to higlight with gq
 set formatprg=par\ -q
 
 " http://vim.wikia.com/wiki/Dictionary_completions
@@ -210,11 +211,14 @@ if has('nvim')
   tnoremap <C-v><Esc> <Esc>
 endif
 
+" Copy all file
+nnoremap <C-a> <esc>ggVG<CR>
+
 " Close quickfix
 nnoremap <leader>qn :ccl<CR>
 
 " Close buffer without losing the split from vim-bbye plugin
-nnoremap <Leader>qb :Bdelete<CR>
+nnoremap <leader>qb :Bdelete<CR>
 
 " Go back to terminal with leader space instead of Ctrl-Z
 nnoremap <leader><Space> <C-Z>
