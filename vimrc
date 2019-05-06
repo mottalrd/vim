@@ -66,6 +66,8 @@ Plug 'mottalrd/copypath.vim'
 Plug 'tpope/vim-commentary'
 " Visualise undo tree
 Plug 'mbbill/undotree'
+" Automatically regenerate tag files
+Plug 'ludovicchabant/vim-gutentags'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
@@ -353,16 +355,19 @@ nnoremap <leader>j :CtrlPJump<cr>
 " Search withing the registers
 nnoremap <leader>r :CtrlPRegister<cr>
 
-" Specify tags file for VIM
-set tags+=.tags
-
 " Create ctags using Exuberant Ctags
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/universal-ctags/ctags/issues/446 as an alternative
 " ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
 
 " Ctags using the ruby-specific https://github.com/tmm1/ripper-tags
-nnoremap <leader>ct :silent ! ripper-tags -R --exclude=vendor --exclude=log<cr>
+" nnoremap <leader>ct :silent ! ripper-tags -R --exclude=vendor --exclude=log<cr>
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_ctags_executable_ruby = 'ripper-tags --ignore-unsupported-options'
+" For debugging gutentags
+" Read the output with :messages
+" let g:gutentags_trace = 1
+set statusline+=%{gutentags#statusline()}
 
 " vim-ruby configuration
 let ruby_fold = 1
