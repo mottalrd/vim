@@ -35,7 +35,8 @@ Note: Prefix a cursor movement command with a number to repeat it. For example, 
 * :sb<num> - open buffer in split.
 * :bd - delete the buffer
 * Ctrl-o/i - jump to previous / next location
-* bufdo bd - close all buffers
+* :bufdo bd - close all buffers
+* :cdo s/foo/bar/g | update - replace all foo with bar in the quickfix window
 
 # Execute commands
 * :! <your command string>
