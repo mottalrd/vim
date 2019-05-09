@@ -68,6 +68,8 @@ Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
 " Automatically regenerate tag files
 Plug 'ludovicchabant/vim-gutentags'
+" Minimalist autocomplete (alternative to YouCompleteMe, coc.nvim)
+Plug 'lifepillar/vim-mucomplete'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
@@ -253,7 +255,7 @@ autocmd FileType javascript nnoremap <leader>s <S-O>debugger<Esc>
 " In normal mode can't happen because it conflicts with Ctrl-i
 " nnoremap <Tab> >>_
 " nnoremap <S-Tab> <<_
-inoremap <S-Tab> <C-D>
+" inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
@@ -367,7 +369,8 @@ let g:gutentags_ctags_executable_ruby = 'ripper-tags --ignore-unsupported-option
 " For debugging gutentags
 " Read the output with :messages
 " let g:gutentags_trace = 1
-set statusline+=%{gutentags#statusline()}
+" To see when we are indexing, but it seems to mess up the ruler
+" set statusline+=%{gutentags#statusline()}
 
 " vim-ruby configuration
 let ruby_fold = 1
@@ -397,6 +400,13 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 " Ideally that would be loaded from the bash, but for some reason it does not.
 " https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
 let $DISABLE_SPRING=1
+
+" Autocomplete configuration
+" https://github.com/lifepillar/vim-mucomplete
+set completeopt+=menuone
+set completeopt+=noselect
+set shortmess+=c   " Shut off completion messages
+let g:mucomplete#enable_auto_at_startup = 1
 
 " TODO: Try to add syntaxt checking https://vimawesome.com/plugin/syntastic
 " TODO: Autocomplete for end keyword https://github.com/tpope/vim-endwise
