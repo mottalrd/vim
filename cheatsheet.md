@@ -8,6 +8,7 @@
 * G - Go to end of file
 * [n]gg - Go to beginning of file (or line n)
 Note: Prefix a cursor movement command with a number to repeat it. For example, 4j moves down 4 lines.
+test
 
 # Insert character
 * i/I - start insert mode at cursor/beginning of line.

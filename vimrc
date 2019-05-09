@@ -274,6 +274,11 @@ let g:ctrlp_nerdtree_show_hidden = 1
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
 
+" Undotree persistent configuration
+" https://www.electricmonk.nl/log/2012/07/26/persistent-undo-history-in-vim/
+set undodir=~/.vim/undodir
+set undofile
+
 " vim-test mappings
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl http://vim.wikia.com/wiki/Map_caps_lock_to_escape_in_macOS
 nmap <leader>tn :TestNearest<CR>
