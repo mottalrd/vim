@@ -413,19 +413,36 @@ set completeopt+=noselect
 set shortmess+=c   " Shut off completion messages
 let g:mucomplete#enable_auto_at_startup = 1
 
-" TODO: Try to add syntaxt checking https://vimawesome.com/plugin/syntastic
-" TODO: Autocomplete for end keyword https://github.com/tpope/vim-endwise
-" TODO: Auto-add closing quotes/parenthesis/etc https://github.com/Raimondi/delimitMate
-" TODO: Do I need gem-ctags and rbenv-ctags?
+" TODO: Autocomplete for end keyword
+" https://github.com/tpope/vim-endwise
+
+" TODO: Auto-add closing quotes/parenthesis/etc
+" https://github.com/Raimondi/delimitMate
+
+" TODO: Automatically generate ctags for rbenv Ruby stdlibs
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/rbenv-ctags
+
+" TODO: Automatic ctags generation on gem install
+" https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/gem-ctags
-" TODO: Try yank ring to remember old yanks
+
+" MAYBE: Syntaxt checking
+" https://vimawesome.com/plugin/syntastic
+"
+" MAYBE: Remember old yanks
 " https://github.com/vim-scripts/YankRing.vim
-" TODO: Show indentation levels
+
+" MAYBE: Show indentation levels
 " https://github.com/nathanaelkane/vim-indent-guides
-" TODO: Working with HAML using vim-haml Tim Pope
+
+" MAYBE: Working with HAML using vim-haml Tim Pope
 " https://stackoverflow.com/questions/1639606/how-do-i-install-a-plugin-for-vim
-" TODO: Make tables aligned with
+
+" MAYBE: Make tables aligned with
 " https://github.com/godlygeek/tabular
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+
+" MAYBE: https://github.com/jpalardy/vim-slime
+" Easily copy and paste text from vim to another terminal
+

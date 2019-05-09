@@ -6,3 +6,4 @@ autoload
 sessions
 session.vim
 spell
+undodir
