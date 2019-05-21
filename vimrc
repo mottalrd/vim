@@ -370,7 +370,7 @@ nnoremap <leader>r :CtrlPRegister<cr>
 " Ctags using the ruby-specific https://github.com/tmm1/ripper-tags
 " nnoremap <leader>ct :silent ! ripper-tags -R --exclude=vendor --exclude=log<cr>
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_ctags_executable_ruby = 'ripper-tags --ignore-unsupported-options'
+let g:gutentags_ctags_executable_ruby = 'ripper-tags -R --ignore-unsupported-options'
 " For debugging gutentags
 " Read the output with :messages
 " let g:gutentags_trace = 1
