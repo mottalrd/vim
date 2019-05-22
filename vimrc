@@ -412,10 +412,10 @@ let $DISABLE_SPRING=1
 
 " Autocomplete configuration
 " https://github.com/lifepillar/vim-mucomplete
-set completeopt+=menuone
-set completeopt+=noselect
-set shortmess+=c   " Shut off completion messages
-let g:mucomplete#enable_auto_at_startup = 1
+" set completeopt+=menuone
+" set completeopt+=noselect
+" set shortmess+=c   " Shut off completion messages
+" let g:mucomplete#enable_auto_at_startup = 1
 
 " TODO: Autocomplete for end keyword
 " https://github.com/tpope/vim-endwise
