@@ -66,8 +66,6 @@ Plug 'mottalrd/copypath.vim'
 Plug 'tpope/vim-commentary'
 " Visualise undo tree
 Plug 'mbbill/undotree'
-" Automatically regenerate tag files
-Plug 'ludovicchabant/vim-gutentags'
 " Minimalist autocomplete (alternative to YouCompleteMe, coc.nvim)
 Plug 'lifepillar/vim-mucomplete'
 
@@ -372,14 +370,7 @@ nnoremap <leader>r :CtrlPRegister<cr>
 " ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
 
 " Ctags using the ruby-specific https://github.com/tmm1/ripper-tags
-" nnoremap <leader>ct :silent ! ripper-tags -R --exclude=vendor --exclude=log<cr>
-let g:gutentags_define_advanced_commands = 1
-let g:gutentags_ctags_executable_ruby = 'ripper-tags -R --ignore-unsupported-options'
-" For debugging gutentags
-" Read the output with :messages
-" let g:gutentags_trace = 1
-" To see when we are indexing, but it seems to mess up the ruler
-" set statusline+=%{gutentags#statusline()}
+nnoremap <leader>ct :silent ! ripper-tags -R --exclude=vendor --exclude=log<cr>
 
 " vim-ruby configuration
 let ruby_fold = 1
@@ -430,6 +421,16 @@ let $DISABLE_SPRING=1
 " TODO: Automatic ctags generation on gem install
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/gem-ctags
+
+" TODO: Plug 'ludovicchabant/vim-gutentags'
+" Automatically generate tags
+" let g:gutentags_define_advanced_commands = 1
+" let g:gutentags_ctags_executable_ruby = 'ripper-tags -R --ignore-unsupported-options'
+" For debugging gutentags
+" Read the output with :messages
+" let g:gutentags_trace = 1
+" To see when we are indexing, but it seems to mess up the ruler
+" set statusline+=%{gutentags#statusline()}
 
 " MAYBE: Syntaxt checking
 " https://vimawesome.com/plugin/syntastic
