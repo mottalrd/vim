@@ -450,3 +450,7 @@ let $DISABLE_SPRING=1
 " MAYBE: https://github.com/jpalardy/vim-slime
 " Easily copy and paste text from vim to another terminal
 
+" MAYBE: https://github.com/SirVer/ultisnips
+" Snippets solution
+" https://www.oliversherouse.com/2017/08/21/vim_zero.html#snippets
+
