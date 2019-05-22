@@ -148,6 +148,10 @@ set formatprg=par\ -q
 set complete+=k
 set dictionary+=/usr/share/dict/words
 
+" Language aware completion
+" https://vim.fandom.com/wiki/Omni_completion
+set omnifunc=syntaxcomplete#Complete
+
 function EnableWriting()
   set textwidth=72 " Default of par
   set formatoptions+=t
