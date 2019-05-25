@@ -188,7 +188,8 @@ set splitbelow
 set splitright
 
 " http://vimcasts.org/episodes/spell-checking/
-nmap <silent> <leader>r :set spell!<CR>
+" nmap <silent> <leader>r :set spell!<CR>
+set spell!
 
 " Copy path to unnamed register
 " https://github.com/vim-scripts/copypath.vim/blob/master/plugin/copypath.vim
@@ -403,10 +404,13 @@ let $DISABLE_SPRING=1
 
 " Autocomplete configuration
 " https://github.com/lifepillar/vim-mucomplete
-" set completeopt+=menuone
-" set completeopt+=noselect
-" set shortmess+=c   " Shut off completion messages
-" let g:mucomplete#enable_auto_at_startup = 1
+set completeopt+=menuone
+set completeopt+=noselect
+set shortmess+=c   " Shut off completion messages
+let g:mucomplete#enable_auto_at_startup = 1
+" https://github.com/lifepillar/vim-mucomplete/issues/149
+" https://medium.com/usevim/set-complete-e76b9f196f0f
+let g:mucomplete#chains = { 'default': ['tags', 'incl', 'c-p'] }
 
 " TODO: Autocomplete for end keyword
 " https://github.com/tpope/vim-endwise
