@@ -367,10 +367,11 @@ nnoremap <leader>r :CtrlPRegister<cr>
 " Create ctags using Exuberant Ctags
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/universal-ctags/ctags/issues/446 as an alternative
-" ctags -R --languages=ruby --exclude=.git --exclude=log -f .tags<cr>
+" ctags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)<cr>
 
 " Ctags using the ruby-specific https://github.com/tmm1/ripper-tags
-nnoremap <leader>ct :silent ! ripper-tags -R --exclude=vendor --exclude=log<cr>
+" https://github.com/tmm1/ripper-tags/issues/91
+nnoremap <leader>ct :silent ! ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths)<cr>
 
 " vim-ruby configuration
 let ruby_fold = 1
