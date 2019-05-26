@@ -410,6 +410,8 @@ set shortmess+=c   " Shut off completion messages
 let g:mucomplete#enable_auto_at_startup = 1
 " https://github.com/lifepillar/vim-mucomplete/issues/149
 " https://medium.com/usevim/set-complete-e76b9f196f0f
+set complete-=t
+set complete-=i
 let g:mucomplete#chains = { 'default': ['tags', 'incl', 'c-p'] }
 
 " TODO: Autocomplete for end keyword
