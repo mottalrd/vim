@@ -113,6 +113,7 @@ set ruler
 
 " Folds always open by default
 " http://vim.wikia.com/wiki/All_folds_open_when_opening_a_file
+" In YAML files I need to set this explicitly
 set foldmethod=indent
 set foldlevel=20
 
@@ -374,7 +375,7 @@ nnoremap <leader>r :CtrlPRegister<cr>
 " Local re-index
 nnoremap <leader>ctl :silent ! ripper-tags -R --exclude=.git --exclude=log<cr>
 " Global re-index
-nnoremap <leader>cta :silent ! ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')<cr>
+" nnoremap <leader>cta :silent ! ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')<cr>
 
 " vim-ruby configuration
 let ruby_fold = 1
