@@ -188,7 +188,7 @@ set splitbelow
 set splitright
 
 " http://vimcasts.org/episodes/spell-checking/
-nmap <silent> <leader>sp :set spell!<CR>
+nmap <silent> <leader>p :set spell!<CR>
 
 " Copy path to unnamed register
 " https://github.com/vim-scripts/copypath.vim/blob/master/plugin/copypath.vim
