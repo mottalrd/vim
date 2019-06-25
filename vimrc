@@ -371,7 +371,10 @@ nnoremap <leader>r :CtrlPRegister<cr>
 
 " Ctags using the ruby-specific https://github.com/tmm1/ripper-tags
 " https://github.com/tmm1/ripper-tags/issues/91
-nnoremap <leader>ct :silent ! ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths)<cr>
+" Local re-index
+nnoremap <leader>ctl :silent ! ripper-tags -R --exclude=.git --exclude=log<cr>
+" Global re-index
+nnoremap <leader>cta :silent ! ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')<cr>
 
 " vim-ruby configuration
 let ruby_fold = 1
