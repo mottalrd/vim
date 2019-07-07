@@ -16,8 +16,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tomasr/molokai'
 " Run tests using hotkeys
 Plug 'janko-m/vim-test'
-" Better ruby awareness
-Plug 'vim-ruby/vim-ruby'
 " Better way to open the files from a quickfix window
 Plug 'yssl/QFEnter'
 " Buffer explorer
