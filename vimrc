@@ -471,3 +471,6 @@ let $DISABLE_SPRING=1
 " Snippets solution
 " https://www.oliversherouse.com/2017/08/21/vim_zero.html#snippets
 
+" MAYBE: https://github.com/tpope/vim-sleuth
+" Automatically sets shiftwidth and expandtab
+
