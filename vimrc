@@ -37,6 +37,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 " Ruby specific support plugins
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
