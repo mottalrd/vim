@@ -279,6 +279,10 @@ vnoremap <S-Tab> <gv
 " Provides suggestions for next word
 imap <C-Space> <C-P>
 
+" Center the screen when jumping back
+" https://www.andrewferrier.com/degrade-gracefully-vim/#/6/1
+nnoremap <C-o> <C-o>zz
+
 " Quickly open nerdtree https://stackoverflow.com/questions/6467634/create-a-command-shortcut-for-nerdtree-in-vim-editor
 " Also with ctrlp-nerdtree plugin for search
 nnoremap <leader>ne :NERDTree<cr>
