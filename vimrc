@@ -124,10 +124,6 @@ set mouse=a
 " Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
 let mapleader = ","
 
-" Autocompletion sources
-" https://robots.thoughtbot.com/vim-you-complete-me
-set complete=.,b,u,]
-
 " More intuitive movement on softwrap
 " http://vimcasts.org/episodes/soft-wrapping-text/
 vmap <C-j> gj
@@ -140,10 +136,21 @@ nmap <C-k> gk
 " Format the text you want to higlight with gq
 set formatprg=par\ -q
 
+" Autocompletion sources
 " http://vim.wikia.com/wiki/Dictionary_completions
-" Complete dictionary with Ctrl-N
-set complete+=k
+" https://robots.thoughtbot.com/vim-you-complete-me
+" https://github.com/lifepillar/vim-mucomplete
+" https://vim.fandom.com/wiki/Dictionary_completions
+" https://github.com/lifepillar/vim-mucomplete/issues/149
+" https://medium.com/usevim/set-complete-e76b9f196f0f
+" :help 'complete' and :set complete to see what's available
+set complete=.,b,u,]
 set dictionary+=/usr/share/dict/words
+set completeopt+=menuone
+set completeopt+=noselect
+set shortmess+=c   " Shut off completion messages
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#chains = { 'default': ['c-p'] }
 
 " Language aware completion
 " https://vim.fandom.com/wiki/Omni_completion
@@ -403,18 +410,6 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 " Ideally that would be loaded from the bash, but for some reason it does not.
 " https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
 let $DISABLE_SPRING=1
-
-" Autocomplete configuration
-" https://github.com/lifepillar/vim-mucomplete
-set completeopt+=menuone
-set completeopt+=noselect
-set shortmess+=c   " Shut off completion messages
-let g:mucomplete#enable_auto_at_startup = 1
-" https://github.com/lifepillar/vim-mucomplete/issues/149
-" https://medium.com/usevim/set-complete-e76b9f196f0f
-" :help 'complete' and :set complete to see what's available
-set complete-=k
-let g:mucomplete#chains = { 'default': ['c-p'] }
 
 " TODO: Autocomplete for end keyword
 " https://github.com/tpope/vim-endwise
