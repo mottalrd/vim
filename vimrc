@@ -101,6 +101,10 @@ set number
 set termguicolors
 colorscheme molokai
 
+" Hightlight line with cursor
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=#303030
+
 " Tell vim how many columns a tab counts for
 set tabstop=2
 
@@ -127,9 +131,6 @@ set backspace=indent,eol,start
 
 " Enable mouse support
 set mouse=a
-
-" Hightlight line with cursor
-set cursorline
 
 " Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
 let mapleader = ","
