@@ -203,7 +203,22 @@ set splitbelow
 set splitright
 
 " http://vimcasts.org/episodes/spell-checking/
-nmap <silent> <leader>p :set spell!<CR>
+" https://gist.github.com/brandonpittman/9d15134057c7267a88a8
+" Toggle spellchecking
+function! ToggleSpellCheck()
+  set spell!
+  if &spell
+    " This is because the highlight setting
+    " was getting overridden somehow by language settings
+    syntax off
+    echo "Spellcheck ON"
+  else
+    syntax on
+    echo "Spellcheck OFF"
+  endif
+endfunction
+
+nnoremap <silent> <leader>z :call ToggleSpellCheck()<CR>
 
 " Copy path to unnamed register
 " https://github.com/vim-scripts/copypath.vim/blob/master/plugin/copypath.vim
