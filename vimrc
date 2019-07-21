@@ -135,6 +135,10 @@ set mouse=a
 " Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
 let mapleader = ","
 
+" Switch column and semicolumn for fast command invocation
+nmap ; :
+xmap ; :
+
 " More intuitive movement on softwrap
 " http://vimcasts.org/episodes/soft-wrapping-text/
 vmap <C-j> gj
