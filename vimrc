@@ -67,8 +67,6 @@ Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
 " Minimalist autocomplete (alternative to YouCompleteMe, coc.nvim)
 Plug 'lifepillar/vim-mucomplete'
-" Shows a pop-out list of register contents when using " (normal mode) and <C-R> (insert mode).
-Plug 'junegunn/vim-peekaboo'
 " Highlight text objects when you select them using hotkeys
 Plug 'machakann/vim-highlightedyank'
 " Better % to jump between open/close keywords
