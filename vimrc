@@ -405,9 +405,9 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " Go to a previous location
-nnoremap <leader>j :CtrlPJump<cr>
+nnoremap <leader>bj :CtrlPJump<cr>
 " Search withing the registers
-nnoremap <leader>r :CtrlPRegister<cr>
+nnoremap <leader>br :CtrlPRegister<cr>
 
 " Create ctags using Exuberant Ctags
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
