@@ -373,8 +373,13 @@ endfunction
 command! -nargs=+ -complete=file Ag call Ag(<q-args>)
 nnoremap \ :Ag<SPACE>
 
-" Better % to jump between keywords https://thoughtbot.com/upcase/videos/navigating-within-ruby-files
+" Better % to jump between keywords
+" https://thoughtbot.com/upcase/videos/navigating-within-ruby-files
 runtime macros/matchit.vim
+
+" Leave some space when scrolling down
+" https://items.sjbach.com/319/configuring-vim-right
+set scrolloff=3
 
 " Spaces also in normal mode
 nnoremap <space> i<space><esc>
