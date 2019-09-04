@@ -76,6 +76,8 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'andymass/vim-matchup'
 " Indexed search, shows the number of matches
 Plug 'henrik/vim-indexed-search'
+" Give a history for yanks, not just deletes
+Plug 'svermeulen/vim-yoink'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
@@ -280,6 +282,17 @@ nnoremap <leader>h :nohl<CR>
 nnoremap <leader>af zM
 nnoremap <leader>ad zR
 nnoremap <leader>aa za
+" For YAML do
+" :setlocal foldmethod=indent
+
+" For yank history
+" Not compatible because of https://github.com/svermeulen/vim-yoink/issues/9
+" nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+" nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+nmap [y <plug>(YoinkRotateBack)
+nmap ]y <plug>(YoinkRotateForward)
 
 " Quick git commands
 nnoremap <leader>gs :Gstatus<CR>
