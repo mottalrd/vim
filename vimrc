@@ -8,6 +8,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Vimplug https://github.com/junegunn/vim-plug
+" To delete a plugin :PlugClean
+
 " To navigate files
 Plug 'scrooloose/nerdtree'
 " To quickly open a file
