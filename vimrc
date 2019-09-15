@@ -389,6 +389,20 @@ endfunction
 command! -nargs=+ -complete=file Ag call Ag(<q-args>)
 nnoremap \ :Ag<SPACE>
 
+" Set the title of the Terminal to the currently open file
+function! SetTerminalTitle()
+    let titleString = expand('%:t')
+    if len(titleString) > 0
+        let &titlestring = expand('%:t')
+        " this is the format iTerm2 expects when setting the window title
+        let cmd = 'silent !set_terminal_tab_title "'.&titlestring.'"'
+        execute cmd
+        redraw!
+    endif
+endfunction
+
+autocmd BufEnter * call SetTerminalTitle()
+
 " Better % to jump between keywords
 " https://thoughtbot.com/upcase/videos/navigating-within-ruby-files
 runtime macros/matchit.vim
