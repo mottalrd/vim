@@ -50,12 +50,6 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'tacahiroy/ctrlp-funky'
 " Use ctrlp with Ag to search
 Plug 'lokikl/vim-ctrlp-ag'
-" Open directory in nerd-tree using ctrlp
-Plug 'voronkovich/ctrlp-nerdtree.vim'
-" Navigate jumps with ctrlp
-Plug 'DeaR/ctrlp-jumps'
-" Use registers in ctrl-p
-Plug 'mattn/ctrlp-register'
 " Easily select parts of a line
 " https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
 Plug 'kana/vim-textobj-user'
