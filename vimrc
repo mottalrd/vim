@@ -68,8 +68,8 @@ Plug 'mottalrd/copypath.vim'
 Plug 'tpope/vim-commentary'
 " Visualise undo tree
 Plug 'mbbill/undotree'
-" Minimalist autocomplete (alternative to YouCompleteMe, coc.nvim)
-Plug 'lifepillar/vim-mucomplete'
+" Autocomplete
+Plug 'ervandew/supertab'
 " Highlight text objects when you select them using hotkeys
 Plug 'machakann/vim-highlightedyank'
 " Better % to jump between open/close keywords
@@ -157,22 +157,6 @@ nmap <C-k> gk
 " http://vimcasts.org/episodes/formatting-text-with-par/
 " Format the text you want to higlight with gq
 set formatprg=par\ -q
-
-" Autocompletion sources
-" http://vim.wikia.com/wiki/Dictionary_completions
-" https://robots.thoughtbot.com/vim-you-complete-me
-" https://github.com/lifepillar/vim-mucomplete
-" https://vim.fandom.com/wiki/Dictionary_completions
-" https://github.com/lifepillar/vim-mucomplete/issues/149
-" https://medium.com/usevim/set-complete-e76b9f196f0f
-" :help 'complete' and :set complete to see what's available
-set complete=.,b,u,]
-set dictionary+=/usr/share/dict/words
-set completeopt+=menuone,noselect
-set shortmess+=c   " Shut off completion messages
-set belloff+=ctrlg
-let g:mucomplete#enable_auto_at_startup = 1
-let g:mucomplete#chains = { 'default': ['c-p'] }
 
 " Language aware completion
 " https://vim.fandom.com/wiki/Omni_completion
