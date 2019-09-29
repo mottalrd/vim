@@ -66,12 +66,11 @@ Plug 'mbbill/undotree'
 Plug 'ervandew/supertab'
 " Highlight text objects when you select them using hotkeys
 Plug 'machakann/vim-highlightedyank'
-" Better % to jump between open/close keywords
-Plug 'andymass/vim-matchup'
 " Indexed search, shows the number of matches
 Plug 'henrik/vim-indexed-search'
-" Give a history for yanks, not just deletes
-Plug 'svermeulen/vim-yoink'
+" Better yank register
+" http://vimcasts.org/blog/2013/11/registers-the-good-the-bad-and-the-ugly-parts/
+Plug 'maxbrunsfeld/vim-yankstack'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
@@ -173,8 +172,8 @@ command DisableWriting :call DisableWriting()
 command EnableWriting :call EnableWriting()
 
 " Save automatically when text is changed with vim-auto-save
-let g:auto_save = 1
-let g:auto_save_in_insert_mode = 0
+" let g:auto_save = 1
+" let g:auto_save_in_insert_mode = 0
 
 " vim-session configuration
 let g:session_autosave = 'yes'
@@ -265,15 +264,11 @@ nnoremap <leader>aa za
 " For YAML do
 " :setlocal foldmethod=indent
 
-" For yank history
-" Not compatible because of https://github.com/svermeulen/vim-yoink/issues/9
-" nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-" nmap <c-p> <plug>(YoinkPostPasteSwapForward)
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
-nmap [y <plug>(YoinkRotateBack)
-nmap ]y <plug>(YoinkRotateForward)
-let g:yoinkAutoFormatPaste = 1
+" Yank registers https://github.com/maxbrunsfeld/vim-yankstack
+call yankstack#setup()
+nmap <leader>v <Plug>yankstack_substitute_older_paste
+nmap <leader>c <Plug>yankstack_substitute_newer_paste
+let g:yankstack_map_keys = 0
 
 " Quick git commands
 nnoremap <leader>gs :Gstatus<CR>
