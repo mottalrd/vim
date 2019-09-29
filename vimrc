@@ -141,7 +141,9 @@ set mouse=a
 let mapleader = ","
 
 " Switch column and semicolumn for fast command invocation
+" https://vim.fandom.com/wiki/Map_semicolon_to_colon
 nmap ; :
+noremap ;; ;
 xmap ; :
 
 " More intuitive movement on softwrap
