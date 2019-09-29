@@ -394,21 +394,30 @@ nnoremap \ :Ag<SPACE>
 
 " Set the title of the Terminal to the currently open file
 function! SetTerminalTitle()
-    let titleString = expand('%:t')
-    if len(titleString) > 0
-        let &titlestring = expand('%:t')
-        " this is the format iTerm2 expects when setting the window title
-        let cmd = 'silent !set_terminal_tab_title "'.&titlestring.'"'
-        execute cmd
-        redraw!
-    endif
+    " let titleString = expand('%:t')
+    " if len(titleString) > 0
+    "     let &titlestring = expand('%:t')
+    "     " this is the format iTerm2 expects when setting the window title
+    "     let cmd = 'silent !set_terminal_tab_title "'.&titlestring.'"'
+    "     execute cmd
+    "     redraw!
+    " endif
 endfunction
 
 autocmd BufEnter * call SetTerminalTitle()
 
 " Better % to jump between keywords
 " https://thoughtbot.com/upcase/videos/navigating-within-ruby-files
-runtime macros/matchit.vim
+" https://github.com/tpope/vim-sensible/blob/master/plugin/sensible.vim
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
+" https://github.com/tpope/vim-sensible/blob/master/plugin/sensible.vim
+if &synmaxcol == 3000
+  " Lowering this improves performance in files with long lines.
+  set synmaxcol=500
+endif
 
 " Leave some space when scrolling down
 " https://items.sjbach.com/319/configuring-vim-right
