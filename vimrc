@@ -168,9 +168,9 @@ set formatprg=par\ -q
 " :help 'complete' and :set complete to see what's available
 set complete=.,b,u,]
 set dictionary+=/usr/share/dict/words
-set completeopt+=menuone
-set completeopt+=noselect
+set completeopt+=menuone,noselect
 set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg
 let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#chains = { 'default': ['c-p'] }
 
