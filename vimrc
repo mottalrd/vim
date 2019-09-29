@@ -365,19 +365,17 @@ endfunction
 command! -nargs=+ -complete=file Ag call Ag(<q-args>)
 nnoremap \ :Ag<SPACE>
 
-" Set the title of the Terminal to the currently open file
-function! SetTerminalTitle()
-    " let titleString = expand('%:t')
-    " if len(titleString) > 0
-    "     let &titlestring = expand('%:t')
-    "     " this is the format iTerm2 expects when setting the window title
-    "     let cmd = 'silent !set_terminal_tab_title "'.&titlestring.'"'
-    "     execute cmd
-    "     redraw!
-    " endif
+" Write a log of what I am working on
+function! WriteLog()
+    let titleString = expand('%:t')
+    if len(titleString) > 0
+        let &titlestring = expand('%:t')
+        let cmd = 'silent !personal_log "'.&titlestring.'"'
+        execute cmd
+    endif
 endfunction
 
-autocmd BufEnter * call SetTerminalTitle()
+autocmd BufWritePost,BufEnter * call WriteLog()
 
 " Better % to jump between keywords
 " https://thoughtbot.com/upcase/videos/navigating-within-ruby-files
