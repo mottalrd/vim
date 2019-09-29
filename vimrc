@@ -295,6 +295,7 @@ nmap p <plug>(YoinkPaste_p)
 nmap P <plug>(YoinkPaste_P)
 nmap [y <plug>(YoinkRotateBack)
 nmap ]y <plug>(YoinkRotateForward)
+let g:yoinkAutoFormatPaste = 1
 
 " Quick git commands
 nnoremap <leader>gs :Gstatus<CR>
