@@ -160,12 +160,14 @@ function EnableWriting()
   set formatoptions+=t
   highlight Normal guifg=#a3a3a3 guibg=Black
   set spell spelllang=en_us
+  set statusline+=%=%{WordCount()}\ words
 endfunction
 
 function DisableWriting() abort
   set textwidth=0
   set formatoptions=tcqj
   set nospell
+  set statusline&
 endfunction
 
 command DisableWriting :call DisableWriting()
@@ -209,6 +211,27 @@ function! ToggleSpellCheck()
 endfunction
 
 nnoremap <silent> <leader>z :call ToggleSpellCheck()<CR>
+
+" Wordcount without the need of adding a status bar to vim
+" https://stackoverflow.com/questions/114431/fast-word-count-function-in-vim#new-answer?s=8dd5d8441d6d4ca99b7ed34b8915c68d
+" https://github.com/vim-airline/vim-airline/issues/760
+function! WordCount()
+  let s:old_status = v:statusmsg
+  let position = getpos(".")
+  exe ":silent normal g\<c-g>"
+  let stat = v:statusmsg
+  let s:word_count = 0
+  if stat != '--No lines in buffer--'
+    if stat =~ "^Selected"
+      let s:word_count = str2nr(split(v:statusmsg)[5])
+    else
+      let s:word_count = str2nr(split(v:statusmsg)[11])
+    end
+    let v:statusmsg = s:old_status
+  end
+  call setpos('.', position)
+  return s:word_count 
+endfunction
 
 " Copy path to unnamed register
 " https://github.com/vim-scripts/copypath.vim/blob/master/plugin/copypath.vim
