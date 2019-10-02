@@ -272,6 +272,10 @@ nnoremap <leader>qb :Bdelete<CR>
 " Go back to terminal with leader space instead of Ctrl-Z
 nnoremap <leader><Space> <C-Z>
 
+" Quick save
+" https://vim.fandom.com/wiki/Quick_save
+noremap <Leader>s :update<CR>
+
 " Delete current file https://stackoverflow.com/questions/4465095/vim-delete-buffer-without-losing-the-split-window
 " Go to the previous buffer, then remove it from the disk (# is a
 " reference to the buffer we just left), and then from the buffers list
@@ -301,8 +305,8 @@ nnoremap <leader>gr :GitGutterUndoHunk<CR>
 nnoremap <leader>gh :GitGutterPreviewHunk<CR>
 
 " Add a binding.pry or debugger for JS
-autocmd FileType ruby nnoremap <leader>s <S-O>binding.pry<Esc>
-autocmd FileType javascript nnoremap <leader>s <S-O>debugger<Esc>
+autocmd FileType ruby nnoremap <leader>b <S-O>binding.pry<Esc>
+autocmd FileType javascript nnoremap <leader>b <S-O>debugger<Esc>
 
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 " In normal mode can't happen because it conflicts with Ctrl-i
