@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+File.open(ENV['HOME']+'/.vim/personal_log', 'a') do |file|
+  branch = `git branch 2>/dev/null | grep '^*' | colrm 1 2`.strip
+  branch = branch.empty? ? "no branch" : branch
+
+  file.puts "#{Time.now.to_s} # #{branch} # #{ARGV[0]}"
+end
+
