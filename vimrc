@@ -305,8 +305,8 @@ nnoremap <leader>gr :GitGutterUndoHunk<CR>
 nnoremap <leader>gh :GitGutterPreviewHunk<CR>
 
 " Add a binding.pry or debugger for JS
-autocmd FileType ruby nnoremap <leader>b <S-O>binding.pry<Esc>
-autocmd FileType javascript nnoremap <leader>b <S-O>debugger<Esc>
+autocmd FileType ruby nnoremap <leader>tb <S-O>binding.pry<Esc>
+autocmd FileType javascript nnoremap <leader>tb <S-O>debugger<Esc>
 
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
 " In normal mode can't happen because it conflicts with Ctrl-i
