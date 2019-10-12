@@ -27,9 +27,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'moll/vim-bbye'
 " Surround a piece of text 
 Plug 'tpope/vim-surround'
-" Autosave plugin
-Plug 'vim-scripts/vim-auto-save'
-" Git plugin to issue vim commands
+" Vim plugin to issue git commands
 Plug 'tpope/vim-fugitive'
 " Goes with vim fugitive to open commits on github
 Plug 'tpope/vim-rhubarb'
@@ -46,10 +44,6 @@ Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
 " Use ctrlp to jump between tags
 Plug 'ivalkeen/vim-ctrlp-tjump'
-" Use ctrlp to jump between functions
-Plug 'tacahiroy/ctrlp-funky'
-" Use ctrlp with Ag to search
-Plug 'lokikl/vim-ctrlp-ag'
 " Easily select parts of a line
 " https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
 Plug 'kana/vim-textobj-user'
