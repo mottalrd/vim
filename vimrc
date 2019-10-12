@@ -320,9 +320,6 @@ autocmd FileType javascript nnoremap <leader>tb <S-O>debugger<Esc>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
-" Provides suggestions for next word
-imap <C-Space> <C-P>
-
 " Center the screen when jumping back
 " https://www.andrewferrier.com/degrade-gracefully-vim/#/6/1
 nnoremap <C-o> <C-o>zz
