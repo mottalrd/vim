@@ -133,6 +133,14 @@ set backspace=indent,eol,start
 " Enable mouse support
 set mouse=a
 
+if !exists("*ReloadVimrc")
+  function ReloadVimrc()
+    source ~/.vim/vimrc
+  endfunction
+end
+
+command! ReloadVimrc :call ReloadVimrc()
+
 " Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
 let mapleader = ","
 
@@ -177,8 +185,8 @@ function DisableWriting() abort
   set statusline&
 endfunction
 
-command DisableWriting :call DisableWriting()
-command EnableWriting :call EnableWriting()
+command! DisableWriting :call DisableWriting()
+command! EnableWriting :call EnableWriting()
 
 " Save automatically when text is changed with vim-auto-save
 " let g:auto_save = 1
