@@ -269,7 +269,7 @@ if has('nvim')
 endif
 
 " Copy all file
-nnoremap <C-a> <esc>ggVG<CR>
+nnoremap <C-g> <esc>ggVG<CR>
 
 " Close quickfix
 nnoremap <leader>qn :ccl<CR>
