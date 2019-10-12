@@ -54,6 +54,7 @@ Plug 'lokikl/vim-ctrlp-ag'
 " https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
+Plug 'nelstrom/vim-textobj-rubyblock'
 " Easily create scratch windows
 Plug 'mtth/scratch.vim'
 " Copy file path
@@ -89,6 +90,9 @@ endif
 " Recognize the type of the file and set the 'filetype' option.
 " Can be used to set the syntax highlighting, set options, etc.
 filetype plugin indent on
+
+" Disable Vi compatible mode https://github.com/nelstrom/vim-textobj-rubyblock
+set nocompatible
 
 " Enable syntaxt detection based on the file type
 syntax on
