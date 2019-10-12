@@ -46,6 +46,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-dispatch'
 " Easily select parts of a line
 " https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
 Plug 'kana/vim-textobj-user'
@@ -456,9 +457,9 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " Ctags using the ruby-specific https://github.com/tmm1/ripper-tags
 " https://github.com/tmm1/ripper-tags/issues/91
 " Local re-index
-nnoremap <leader>ctl :silent ! ripper-tags -R --exclude=.git --exclude=log<cr>
+nnoremap <leader>ctl :Dispatch ripper-tags -R --exclude=.git --exclude=log<cr>
 " Global re-index
-" nnoremap <leader>cta :silent ! ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')<cr>
+nnoremap <leader>cta :Dispatch ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths \| sed 's/$/\/lib/')<cr>
 
 " vim-ruby configuration
 let ruby_fold = 1
