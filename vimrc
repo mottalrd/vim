@@ -465,16 +465,10 @@ let ruby_fold = 1
 let ruby_foldable_groups = 'def do'
 let ruby_spellcheck_strings = 1
 
-" vim-rails hotkey to jump from file to its test
-nnoremap <leader>tj :AV<CR>
-
 " Cool ctags navigation with vim-ctrlp-tjump
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 let g:ctrlp_tjump_only_silent = 1
-
-" Jump between functions using ctrlp
-nnoremap <Leader>fu :CtrlPFunky<Cr>
 
 " Set a nicer foldtext function
 set foldtext=MyFoldText()
@@ -489,35 +483,16 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 " https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
 let $DISABLE_SPRING=1
 
-" TODO: Autocomplete for end keyword
-" https://github.com/tpope/vim-endwise
-
-" TODO: Auto-add closing quotes/parenthesis/etc
-" https://github.com/Raimondi/delimitMate
-
-" TODO: Automatically generate ctags for rbenv Ruby stdlibs
+" MAYBE: Automatically generate ctags for rbenv Ruby stdlibs
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/rbenv-ctags
 
-" TODO: Automatic ctags generation on gem install
+" MAYBE: Automatic ctags generation on gem install
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/gem-ctags
 
-" TODO: Plug 'ludovicchabant/vim-gutentags'
-" Automatically generate tags
-" let g:gutentags_define_advanced_commands = 1
-" let g:gutentags_ctags_executable_ruby = 'ripper-tags -R --ignore-unsupported-options'
-" For debugging gutentags
-" Read the output with :messages
-" let g:gutentags_trace = 1
-" To see when we are indexing, but it seems to mess up the ruler
-" set statusline+=%{gutentags#statusline()}
-
 " MAYBE: Syntaxt checking
 " https://vimawesome.com/plugin/syntastic
-"
-" MAYBE: Remember old yanks
-" https://github.com/vim-scripts/YankRing.vim
 
 " MAYBE: Show indentation levels
 " https://github.com/nathanaelkane/vim-indent-guides
@@ -538,4 +513,7 @@ let $DISABLE_SPRING=1
 
 " MAYBE: https://github.com/tpope/vim-sleuth
 " Automatically sets shiftwidth and expandtab
+
+" MAYBE: https://github.com/dense-analysis/ale
+" Automatically run code linters
 
