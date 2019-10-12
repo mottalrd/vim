@@ -150,6 +150,10 @@ vmap <C-k> gk
 nmap <C-j> gj
 nmap <C-k> gk
 
+" Autosave on buffer leave
+" https://vi.stackexchange.com/questions/7617/how-to-auto-save-file-when-moving-between-split
+autocmd BufLeave * silent! wall
+
 " Use par for text formatting (use gqip to format your paragraph)
 " http://vimcasts.org/episodes/formatting-text-with-par/
 " Format the text you want to higlight with gq
