@@ -342,6 +342,7 @@ let g:ctrlp_nerdtree_show_hidden = 1
 " bufexplorer plugin <leader>be to choose a buffer to edit
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
+nnoremap <leader>bo :b#<cr>
 
 " Undotree persistent configuration
 " https://www.electricmonk.nl/log/2012/07/26/persistent-undo-history-in-vim/
