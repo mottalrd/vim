@@ -15,6 +15,10 @@ endif
 Plug 'scrooloose/nerdtree'
 " To quickly open a file
 Plug 'ctrlpvim/ctrlp.vim'
+" Use ctrlp to jump between tags
+Plug 'ivalkeen/vim-ctrlp-tjump'
+" Use ctrlp with Ag to search
+Plug 'lokikl/vim-ctrlp-ag'
 " Editor theme
 Plug 'tomasr/molokai'
 " Run tests using hotkeys
@@ -42,8 +46,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
-" Use ctrlp to jump between tags
-Plug 'ivalkeen/vim-ctrlp-tjump'
 " Easily select parts of a line
 " https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
 Plug 'kana/vim-textobj-user'
