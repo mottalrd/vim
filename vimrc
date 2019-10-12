@@ -55,6 +55,8 @@ Plug 'mtth/scratch.vim'
 Plug 'mottalrd/copypath.vim'
 " Add comments
 Plug 'tpope/vim-commentary'
+" Close quotes / parenthesis
+Plug 'jiangmiao/auto-pairs'
 " Visualise undo tree
 Plug 'mbbill/undotree'
 " Autocomplete
