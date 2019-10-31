@@ -469,6 +469,9 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 nnoremap <leader>ctl :Dispatch ripper-tags -R --exclude=.git --exclude=log<cr>
 " Global re-index
 nnoremap <leader>cta :Dispatch ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths \| sed 's/$/\/lib/')<cr>
+" Shortlist gems
+let libs_pipe_separated = join(split($WORK_GEMS, ","), "\\|")
+execute "nnoremap <leader>cts :Dispatch ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths \\| sed 's/$/\\/lib/' \\| grep -E \"(".libs_pipe_separated.")\")<cr>"
 
 " vim-ruby configuration
 let ruby_fold = 1
