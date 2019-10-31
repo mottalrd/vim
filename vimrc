@@ -318,6 +318,7 @@ nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gr :GitGutterUndoHunk<CR>
 nnoremap <leader>gh :GitGutterPreviewHunk<CR>
+let g:fugitive_summary_format = '%cD - %s'
 
 " Add a binding.pry or debugger for JS
 autocmd FileType ruby nnoremap <leader>tb <S-O>binding.pry<Esc>
