@@ -388,8 +388,8 @@ let g:ctrlp_ag_ignores = '--ignore .git
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
 
-" Search for tags using ctrlp (:help ctrlp-extensions)
-" let g:ctrlp_extensions = ['tag']
+" Add custom tags here, jump with :tag <tagname> or :tselect <tagname>
+set tags+=my_tags
 
 " bind K to grep word under cursor
 nnoremap K :silent! grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
