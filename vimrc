@@ -29,7 +29,7 @@ Plug 'yssl/QFEnter'
 Plug 'jlanzarotta/bufexplorer'
 " Close buffer without losing the split
 Plug 'moll/vim-bbye'
-" Surround a piece of text 
+" Surround a piece of text
 Plug 'tpope/vim-surround'
 " Makes vim-surround commands repeatable with dot
 Plug 'tpope/vim-repeat'
@@ -145,12 +145,9 @@ command! ReloadVimrc :call ReloadVimrc()
 
 " Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
 let mapleader = ","
-
-" Switch column and semicolumn for fast command invocation
-" https://vim.fandom.com/wiki/Map_semicolon_to_colon
-nmap ; :
+" Keep backward char search (opposite of ; to repeat last f{char})
 noremap ;; ;
-xmap ; :
+noremap ;b ,
 
 " More intuitive movement on softwrap
 " http://vimcasts.org/episodes/soft-wrapping-text/
@@ -197,7 +194,7 @@ command! EnableWriting :call EnableWriting()
 " vim-session configuration
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
-let g:session_directory = ".vim-session" 
+let g:session_directory = ".vim-session"
 
 " https://stackoverflow.com/questions/307148/vim-scrolling-slowly
 " https://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
@@ -247,7 +244,7 @@ function! WordCount()
     let v:statusmsg = s:old_status
   end
   call setpos('.', position)
-  return s:word_count 
+  return s:word_count
 endfunction
 
 " Copy path to unnamed register
@@ -493,7 +490,7 @@ highlight Folded guibg=black guifg=yellow
 " https://hackernoon.com/5-vim-plugins-i-cant-live-without-for-javascript-development-f7e98f98e8d5
 autocmd FileType javascript set formatprg=prettier\ --stdin
 
-" Please, no Spring in Rails. 
+" Please, no Spring in Rails.
 " Ideally that would be loaded from the bash, but for some reason it does not.
 " https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
 let $DISABLE_SPRING=1
@@ -531,4 +528,3 @@ let $DISABLE_SPRING=1
 
 " MAYBE: https://github.com/dense-analysis/ale
 " Automatically run code linters
-
