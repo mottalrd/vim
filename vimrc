@@ -31,6 +31,8 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'moll/vim-bbye'
 " Surround a piece of text 
 Plug 'tpope/vim-surround'
+" Makes vim-surround commands repeatable with dot
+Plug 'tpope/vim-repeat'
 " Vim plugin to issue git commands
 Plug 'tpope/vim-fugitive'
 " Goes with vim fugitive to open commits on github
