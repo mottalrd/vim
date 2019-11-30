@@ -15,6 +15,10 @@ endif
 Plug 'scrooloose/nerdtree'
 " To quickly open a file
 Plug 'ctrlpvim/ctrlp.vim'
+" Use ctrlp to jump between tags
+Plug 'ivalkeen/vim-ctrlp-tjump'
+" Use ctrlp with Ag to search
+Plug 'lokikl/vim-ctrlp-ag'
 " Editor theme
 Plug 'tomasr/molokai'
 " Run tests using hotkeys
@@ -25,11 +29,11 @@ Plug 'yssl/QFEnter'
 Plug 'jlanzarotta/bufexplorer'
 " Close buffer without losing the split
 Plug 'moll/vim-bbye'
-" Surround a piece of text 
+" Surround a piece of text
 Plug 'tpope/vim-surround'
-" Autosave plugin
-Plug 'vim-scripts/vim-auto-save'
-" Git plugin to issue vim commands
+" Makes vim-surround commands repeatable with dot
+Plug 'tpope/vim-repeat'
+" Vim plugin to issue git commands
 Plug 'tpope/vim-fugitive'
 " Goes with vim fugitive to open commits on github
 Plug 'tpope/vim-rhubarb'
@@ -44,22 +48,20 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
-" Use ctrlp to jump between tags
-Plug 'ivalkeen/vim-ctrlp-tjump'
-" Use ctrlp to jump between functions
-Plug 'tacahiroy/ctrlp-funky'
-" Use ctrlp with Ag to search
-Plug 'lokikl/vim-ctrlp-ag'
+Plug 'tpope/vim-dispatch'
 " Easily select parts of a line
 " https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
+Plug 'nelstrom/vim-textobj-rubyblock'
 " Easily create scratch windows
 Plug 'mtth/scratch.vim'
 " Copy file path
 Plug 'mottalrd/copypath.vim'
 " Add comments
 Plug 'tpope/vim-commentary'
+" Close quotes / parenthesis
+Plug 'jiangmiao/auto-pairs'
 " Visualise undo tree
 Plug 'mbbill/undotree'
 " Autocomplete
@@ -89,6 +91,9 @@ endif
 " Recognize the type of the file and set the 'filetype' option.
 " Can be used to set the syntax highlighting, set options, etc.
 filetype plugin indent on
+
+" Disable Vi compatible mode https://github.com/nelstrom/vim-textobj-rubyblock
+set nocompatible
 
 " Enable syntaxt detection based on the file type
 syntax on
@@ -130,14 +135,19 @@ set backspace=indent,eol,start
 " Enable mouse support
 set mouse=a
 
+if !exists("*ReloadVimrc")
+  function ReloadVimrc()
+    source ~/.vim/vimrc
+  endfunction
+end
+
+command! ReloadVimrc :call ReloadVimrc()
+
 " Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
 let mapleader = ","
-
-" Switch column and semicolumn for fast command invocation
-" https://vim.fandom.com/wiki/Map_semicolon_to_colon
-nmap ; :
+" Keep backward char search (opposite of ; to repeat last f{char})
 noremap ;; ;
-xmap ; :
+noremap ;b ,
 
 " More intuitive movement on softwrap
 " http://vimcasts.org/episodes/soft-wrapping-text/
@@ -145,6 +155,10 @@ vmap <C-j> gj
 vmap <C-k> gk
 nmap <C-j> gj
 nmap <C-k> gk
+
+" Autosave on buffer leave
+" https://vi.stackexchange.com/questions/7617/how-to-auto-save-file-when-moving-between-split
+autocmd BufLeave * silent! wall
 
 " Use par for text formatting (use gqip to format your paragraph)
 " http://vimcasts.org/episodes/formatting-text-with-par/
@@ -170,8 +184,8 @@ function DisableWriting() abort
   set statusline&
 endfunction
 
-command DisableWriting :call DisableWriting()
-command EnableWriting :call EnableWriting()
+command! DisableWriting :call DisableWriting()
+command! EnableWriting :call EnableWriting()
 
 " Save automatically when text is changed with vim-auto-save
 " let g:auto_save = 1
@@ -180,7 +194,7 @@ command EnableWriting :call EnableWriting()
 " vim-session configuration
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
-let g:session_directory = ".vim-session" 
+let g:session_directory = ".vim-session"
 
 " https://stackoverflow.com/questions/307148/vim-scrolling-slowly
 " https://eduncan911.com/software/fix-slow-scrolling-in-vim-and-neovim.html
@@ -234,7 +248,7 @@ function! WordCount()
     let v:statusmsg = s:old_status
   end
   call setpos('.', position)
-  return s:word_count 
+  return s:word_count
 endfunction
 
 " Copy path to unnamed register
@@ -265,7 +279,7 @@ if has('nvim')
 endif
 
 " Copy all file
-nnoremap <C-a> <esc>ggVG<CR>
+nnoremap <C-g> <esc>ggVG<CR>
 
 " Close quickfix
 nnoremap <leader>qn :ccl<CR>
@@ -307,6 +321,7 @@ nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gr :GitGutterUndoHunk<CR>
 nnoremap <leader>gh :GitGutterPreviewHunk<CR>
+let g:fugitive_summary_format = '%cD - %s'
 
 " Add a binding.pry or debugger for JS
 autocmd FileType ruby nnoremap <leader>tb <S-O>binding.pry<Esc>
@@ -319,9 +334,6 @@ autocmd FileType javascript nnoremap <leader>tb <S-O>debugger<Esc>
 " inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
-
-" Provides suggestions for next word
-imap <C-Space> <C-P>
 
 " Center the screen when jumping back
 " https://www.andrewferrier.com/degrade-gracefully-vim/#/6/1
@@ -338,6 +350,7 @@ let g:ctrlp_nerdtree_show_hidden = 1
 " bufexplorer plugin <leader>be to choose a buffer to edit
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerShowRelativePath=1
+nnoremap <leader>bo :b#<cr>
 
 " Undotree persistent configuration
 " https://www.electricmonk.nl/log/2012/07/26/persistent-undo-history-in-vim/
@@ -378,8 +391,8 @@ let g:ctrlp_ag_ignores = '--ignore .git
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
 
-" Search for tags using ctrlp (:help ctrlp-extensions)
-" let g:ctrlp_extensions = ['tag']
+" Add custom tags here, jump with :tag <tagname> or :tselect <tagname>
+set tags+=my_tags
 
 " bind K to grep word under cursor
 nnoremap K :silent! grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -456,25 +469,22 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " Ctags using the ruby-specific https://github.com/tmm1/ripper-tags
 " https://github.com/tmm1/ripper-tags/issues/91
 " Local re-index
-nnoremap <leader>ctl :silent ! ripper-tags -R --exclude=.git --exclude=log<cr>
+nnoremap <leader>ctl :Dispatch ripper-tags -R --exclude=.git --exclude=log<cr>
 " Global re-index
-" nnoremap <leader>cta :silent ! ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths | sed 's/$/\/lib/')<cr>
+nnoremap <leader>cta :Dispatch ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths \| sed 's/$/\/lib/')<cr>
+" Shortlist gems
+let libs_pipe_separated = join(split($WORK_GEMS, ","), "\\|")
+execute "nnoremap <leader>cts :Dispatch ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths \\| sed 's/$/\\/lib/' \\| grep -E \"(".libs_pipe_separated.")\")<cr>"
 
 " vim-ruby configuration
 let ruby_fold = 1
 let ruby_foldable_groups = 'def do'
 let ruby_spellcheck_strings = 1
 
-" vim-rails hotkey to jump from file to its test
-nnoremap <leader>tj :AV<CR>
-
 " Cool ctags navigation with vim-ctrlp-tjump
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 let g:ctrlp_tjump_only_silent = 1
-
-" Jump between functions using ctrlp
-nnoremap <Leader>fu :CtrlPFunky<Cr>
 
 " Set a nicer foldtext function
 set foldtext=MyFoldText()
@@ -484,40 +494,21 @@ highlight Folded guibg=black guifg=yellow
 " https://hackernoon.com/5-vim-plugins-i-cant-live-without-for-javascript-development-f7e98f98e8d5
 autocmd FileType javascript set formatprg=prettier\ --stdin
 
-" Please, no Spring in Rails. 
+" Please, no Spring in Rails.
 " Ideally that would be loaded from the bash, but for some reason it does not.
 " https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
 let $DISABLE_SPRING=1
 
-" TODO: Autocomplete for end keyword
-" https://github.com/tpope/vim-endwise
-
-" TODO: Auto-add closing quotes/parenthesis/etc
-" https://github.com/Raimondi/delimitMate
-
-" TODO: Automatically generate ctags for rbenv Ruby stdlibs
+" MAYBE: Automatically generate ctags for rbenv Ruby stdlibs
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/rbenv-ctags
 
-" TODO: Automatic ctags generation on gem install
+" MAYBE: Automatic ctags generation on gem install
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/gem-ctags
 
-" TODO: Plug 'ludovicchabant/vim-gutentags'
-" Automatically generate tags
-" let g:gutentags_define_advanced_commands = 1
-" let g:gutentags_ctags_executable_ruby = 'ripper-tags -R --ignore-unsupported-options'
-" For debugging gutentags
-" Read the output with :messages
-" let g:gutentags_trace = 1
-" To see when we are indexing, but it seems to mess up the ruler
-" set statusline+=%{gutentags#statusline()}
-
 " MAYBE: Syntaxt checking
 " https://vimawesome.com/plugin/syntastic
-"
-" MAYBE: Remember old yanks
-" https://github.com/vim-scripts/YankRing.vim
 
 " MAYBE: Show indentation levels
 " https://github.com/nathanaelkane/vim-indent-guides
@@ -539,3 +530,5 @@ let $DISABLE_SPRING=1
 " MAYBE: https://github.com/tpope/vim-sleuth
 " Automatically sets shiftwidth and expandtab
 
+" MAYBE: https://github.com/dense-analysis/ale
+" Automatically run code linters
