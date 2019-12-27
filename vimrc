@@ -202,7 +202,11 @@ set lazyredraw
 
 " Enable clipboard on macosx
 " http://www.markcampbell.me/2016/04/12/setting-up-yank-to-clipboard-on-a-mac-with-vim.html
-set clipboard=unnamed
+" http://vimcasts.org/episodes/accessing-the-system-clipboard-from-vim/
+" also see :help clipboard on nvim
+if has('unnamedplus')
+  set clipboard+=unnamed,unnamedplus
+endif
 
 " Open new split panes to right and bottom, which feels more natural than Vim’s default:
 set splitbelow
