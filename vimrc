@@ -471,6 +471,8 @@ nnoremap <leader>cta :Dispatch ripper-tags -R --exclude=.git --exclude=log . $(b
 " Shortlist gems
 let libs_pipe_separated = join(split($WORK_GEMS, ","), "\\|")
 execute "nnoremap <leader>cts :Dispatch ripper-tags -R --exclude=.git --exclude=log . $(bundle list --paths \\| sed 's/$/\\/lib/' \\| grep -E \"(".libs_pipe_separated.")\")<cr>"
+" This gem
+nnoremap <leader>ctt :Dispatch ripper-tags -R --exclude=.git --exclude=log %:p:h<cr>
 
 " vim-ruby configuration
 let ruby_fold = 1
