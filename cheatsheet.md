@@ -44,6 +44,10 @@ test
 * ctrl-z - go back to bash
 * fg <id> - go back to VIM (resume the background process started with ctrl-z)
 
+# Ex commands
+* :execute "normal! /somestring/\<esc>dw" - search and delete a word using an Ex command
+* q: - opens the edit window for Ex commands
+
 # Code navigation
 * <ctrl-]> to jump to definition (or g<ctrl-]> to choose the jump)
 * gg=G indent all the file (mapped to <leader>fa)
@@ -98,6 +102,8 @@ test
 * 2yy - yank 2 lines
 * yw - yank word
 * y$ - yank to end of line
+* "ryw - yank into register r
+* "rp - paste into register r
 * p - put (paste) the clipboard after cursor
 * P - put (paste) before cursor
 * dd - delete (cut) a line
