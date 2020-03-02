@@ -73,6 +73,8 @@ Plug 'henrik/vim-indexed-search'
 " Better yank register
 " http://vimcasts.org/blog/2013/11/registers-the-good-the-bad-and-the-ugly-parts/
 Plug 'maxbrunsfeld/vim-yankstack'
+" Visual star search
+Plug 'bronson/vim-visual-star-search'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
