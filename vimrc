@@ -131,6 +131,8 @@ set ruler
 set foldmethod=indent
 set foldlevel=20
 
+set ignorecase
+
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
 
