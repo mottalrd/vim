@@ -46,6 +46,7 @@ test
 
 # Ex commands
 * :execute "normal! /somestring/\<esc>dw" - search and delete a word using an Ex command
+* :g/def/normal 0i# - execute ex cmd on each line matching /def/
 * q: - opens the edit window for Ex commands
 
 # Code navigation
