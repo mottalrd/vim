@@ -505,6 +505,9 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 " https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
 let $DISABLE_SPRING=1
 
+" MAYBE: hotkeys for smart substitutions and camelcase to sneakcase
+" https://github.com/tpope/vim-abolish
+
 " MAYBE: Automatically generate ctags for rbenv Ruby stdlibs
 " https://chodounsky.net/2016/12/09/using-tags-to-browse-ruby-and-gem-source-with-vim/
 " https://github.com/tpope/rbenv-ctags
