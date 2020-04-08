@@ -125,6 +125,9 @@ set expandtab
 " Enable bottom right numbers
 set ruler
 
+" Don't use it https://www.cs.swarthmore.edu/oldhelp/vim/modelines.html
+set nomodeline
+
 " Folds always open by default
 " http://vim.wikia.com/wiki/All_folds_open_when_opening_a_file
 " In YAML files I need to set this explicitly
