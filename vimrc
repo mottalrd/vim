@@ -49,6 +49,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dadbod'
 " Easily select parts of a line
 " https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
 Plug 'kana/vim-textobj-user'
