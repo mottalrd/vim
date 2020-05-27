@@ -302,6 +302,9 @@ nnoremap <leader>qb :Bdelete<CR>
 " Go back to terminal with leader space instead of Ctrl-Z
 nnoremap <leader><Space> <C-Z>
 
+" Autocomplete line
+nnoremap <leader>r i<C-x><C-l><C-n>
+
 " Quick save
 " https://vim.fandom.com/wiki/Quick_save
 noremap <Leader>s :update<CR>
