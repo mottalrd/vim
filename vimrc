@@ -177,20 +177,24 @@ set formatprg=par\ -q
 " https://vim.fandom.com/wiki/Omni_completion
 set omnifunc=syntaxcomplete#Complete
 
-function EnableWriting()
-  set textwidth=72 " Default of par
-  set formatoptions+=t
-  highlight Normal guifg=#a3a3a3 guibg=Black
-  set spell spelllang=en_us
-  set statusline+=%=%{WordCount()}\ words
-endfunction
+if !exists("*EnableWriting")
+  function EnableWriting()
+    set textwidth=72 " Default of par
+    set formatoptions+=t
+    highlight Normal guifg=#a3a3a3 guibg=Black
+    set spell spelllang=en_us
+    set statusline+=%=%{WordCount()}\ words
+  endfunction
+end
 
-function DisableWriting() abort
-  set textwidth=0
-  set formatoptions=tcqj
-  set nospell
-  set statusline&
-endfunction
+if !exists("*DisableWriting")
+  function DisableWriting() abort
+    set textwidth=0
+    set formatoptions=tcqj
+    set nospell
+    set statusline&
+  endfunction
+end
 
 command! DisableWriting :call DisableWriting()
 command! EnableWriting :call EnableWriting()
