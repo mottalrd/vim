@@ -395,8 +395,8 @@ endif
 " let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 nnoremap <c-f> :CtrlPag<cr>
 vnoremap <c-f> :CtrlPagVisual<cr>
-nnoremap <leader>ca :CtrlPagLocate
-nnoremap <leader>cp :CtrlPagPrevious<cr>
+" nnoremap <leader>ca :CtrlPagLocate
+" nnoremap <leader>cp :CtrlPagPrevious<cr>
 let g:ctrlp_ag_ignores = '--ignore .git
     \ --ignore "deps/*"
     \ --ignore "_build/*"
