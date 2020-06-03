@@ -303,7 +303,7 @@ nnoremap <leader>qb :Bdelete<CR>
 nnoremap <leader><Space> <C-Z>
 
 " Autocomplete line
-nnoremap <leader>r i<C-x><C-l><C-n>
+nnoremap <leader>r A<C-x><C-l><C-n>
 
 " Quick save
 " https://vim.fandom.com/wiki/Quick_save
