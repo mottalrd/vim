@@ -76,6 +76,8 @@ Plug 'henrik/vim-indexed-search'
 Plug 'maxbrunsfeld/vim-yankstack'
 " Visual star search
 Plug 'bronson/vim-visual-star-search'
+" Grammar check
+Plug 'dpelle/vim-LanguageTool'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
@@ -515,6 +517,9 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 " Ideally that would be loaded from the bash, but for some reason it does not.
 " https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
 let $DISABLE_SPRING=1
+
+" languagetool and vim-LanguageTool
+let g:languagetool_jar = '/usr/local/Cellar/languagetool/5.0/libexec/languagetool-commandline.jar'
 
 " MAYBE: hotkeys for smart substitutions and camelcase to sneakcase
 " https://github.com/tpope/vim-abolish
