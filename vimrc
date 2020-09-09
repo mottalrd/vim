@@ -145,6 +145,19 @@ set backspace=indent,eol,start
 " Enable mouse support
 set mouse=a
 
+" Let neovim use the bashprofile
+let &shell='/usr/local/bin/bash --login'
+
+" https://github.com/mhinz/neovim-remote
+" This is a remote server tool for neovim
+" this is to make things work when neovim is the default
+" editor for git and you don't want to open neovim inside
+" neovim when doing a commit via :terminal
+if has('nvim')
+  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+endif
+autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+
 if !exists("*ReloadVimrc")
   function ReloadVimrc()
     source ~/.vim/vimrc
