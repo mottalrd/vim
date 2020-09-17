@@ -425,7 +425,7 @@ let g:ctrlp_use_caching = 0
 set tags+=my_tags
 
 " bind K to grep word under cursor
-nnoremap K :silent! grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap K :silent! grep! "<C-R><C-W>"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
 " https://robots.thoughtbot.com/faster-grepping-in-vim
