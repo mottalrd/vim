@@ -78,6 +78,9 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'bronson/vim-visual-star-search'
 " Grammar check
 Plug 'dpelle/vim-LanguageTool'
+" Tables
+" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+Plug 'godlygeek/tabular'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
@@ -553,10 +556,6 @@ let g:languagetool_jar = '/usr/local/Cellar/languagetool/5.0/libexec/languagetoo
 
 " MAYBE: Working with HAML using vim-haml Tim Pope
 " https://stackoverflow.com/questions/1639606/how-do-i-install-a-plugin-for-vim
-
-" MAYBE: Make tables aligned with
-" https://github.com/godlygeek/tabular
-" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 
 " MAYBE: https://github.com/jpalardy/vim-slime
 " Easily copy and paste text from vim to another terminal
