@@ -20,7 +20,7 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 " Use ctrlp with Ag to search
 Plug 'lokikl/vim-ctrlp-ag'
 " Editor theme
-Plug 'tomasr/molokai'
+Plug 'overcache/NeoSolarized'
 " Run tests using hotkeys
 Plug 'janko-m/vim-test'
 " Better way to open the files from a quickfix window
@@ -110,7 +110,8 @@ syntax on
 set number
 
 set termguicolors
-colorscheme molokai
+set background=dark
+colorscheme NeoSolarized
 
 " Hightlight line with cursor
 set cursorline
