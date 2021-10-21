@@ -170,6 +170,13 @@ end
 
 command! ReloadVimrc :call ReloadVimrc()
 
+" https://learnvimscriptthehardway.stevelosh.com/chapters/23.html
+" Open a terminal in a new tab
+function Terminal()
+  :tabnew
+  :terminal
+endfunction
+
 " Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
 let mapleader = ","
 " Keep backward char search (opposite of ; to repeat last f{char})
