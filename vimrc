@@ -20,7 +20,7 @@ Plug 'ivalkeen/vim-ctrlp-tjump'
 " Use ctrlp with Ag to search
 Plug 'lokikl/vim-ctrlp-ag'
 " Editor theme
-Plug 'overcache/NeoSolarized'
+" Plug 'overcache/NeoSolarized'
 " Run tests using hotkeys
 Plug 'janko-m/vim-test'
 " Better way to open the files from a quickfix window
@@ -111,7 +111,7 @@ set number
 
 set termguicolors
 set background=dark
-colorscheme NeoSolarized
+" colorscheme NeoSolarized
 
 " Hightlight line with cursor
 set cursorline
