@@ -150,7 +150,7 @@ set backspace=indent,eol,start
 set mouse=a
 
 " Let neovim use the bashprofile
-let &shell='/usr/local/bin/bash --login'
+let &shell='/bin/zsh --login'
 
 " https://github.com/mhinz/neovim-remote
 " This is a remote server tool for neovim
