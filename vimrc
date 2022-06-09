@@ -18,7 +18,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Use ctrlp to jump between tags
 Plug 'ivalkeen/vim-ctrlp-tjump'
 " Use ctrlp with Ag to search
-Plug 'lokikl/vim-ctrlp-ag'
 " Editor theme
 Plug 'overcache/NeoSolarized'
 " Run tests using hotkeys
@@ -414,24 +413,6 @@ else
   let test#strategy = "vimterminal"
 endif
 
-" vim-ctrlp-ag configuration already does the following
-" Use ag over grep
-" set grepprg=ag\ --nogroup\ --nocolor\ --hidden
-" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-nnoremap <c-f> :CtrlPag<cr>
-vnoremap <c-f> :CtrlPagVisual<cr>
-" nnoremap <leader>ca :CtrlPagLocate
-" nnoremap <leader>cp :CtrlPagPrevious<cr>
-let g:ctrlp_ag_ignores = '--ignore .git
-    \ --ignore "deps/*"
-    \ --ignore "_build/*"
-    \ --ignore "node_modules/*"
-    \ --ignore "tags"'
-
-" ag is fast enough that CtrlP doesn't need to cache
-let g:ctrlp_use_caching = 0
-
 " Add custom tags here, jump with :tag <tagname> or :tselect <tagname>
 set tags+=my_tags
 
@@ -523,6 +504,9 @@ nnoremap <leader>ctt :Dispatch ripper-tags -R --exclude=.git --exclude=log %:p:h
 let ruby_fold = 1
 let ruby_foldable_groups = 'def do'
 let ruby_spellcheck_strings = 1
+
+" ctrlp.vim ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Cool ctags navigation with vim-ctrlp-tjump
 nnoremap <c-]> :CtrlPtjump<cr>
