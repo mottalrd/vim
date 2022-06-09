@@ -416,19 +416,13 @@ endif
 " Add custom tags here, jump with :tag <tagname> or :tselect <tagname>
 set tags+=my_tags
 
-" bind K to grep word under cursor
-nnoremap K :silent! grep! "<C-R><C-W>"<CR>:cw<CR>
-
-" bind \ (backward slash) to grep shortcut
+" Ag silver search setup with vim
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " https://vi.stackexchange.com/questions/14923/my-ag-shortcut-chokes-on-spaces
 " https://vi.stackexchange.com/questions/17206/how-to-keep-ag-the-silver-searcher-open-when-no-matches-are-found
-function! Ag(args) abort
-  execute "silent! grep!" shellescape(a:args)
-  copen
-  redraw!
-endfunction
-command! -nargs=+ -complete=file Ag call Ag(<q-args>)
+set grepprg=ag\ --nogroup\ --nocolor
+nnoremap K :silent! grep! "<C-R><C-W>"<CR>:cw<CR>
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
 " Write a log of what I am working on
@@ -506,7 +500,9 @@ let ruby_foldable_groups = 'def do'
 let ruby_spellcheck_strings = 1
 
 " ctrlp.vim ignore files in .gitignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" ag is fast enough that CtrlP doesn't need to cache
+let g:ctrlp_use_caching = 0
 
 " Cool ctags navigation with vim-ctrlp-tjump
 nnoremap <c-]> :CtrlPtjump<cr>
