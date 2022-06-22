@@ -80,6 +80,10 @@ Plug 'dpelle/vim-LanguageTool'
 " Tables
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'godlygeek/tabular'
+" Run interactive shell with alias etc when invoking commands
+" https://vim.fandom.com/wiki/Capture_ex_command_output
+" http://parobalth.github.io/vim-run-line
+Plug 'christoomey/vim-run-interactive'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
