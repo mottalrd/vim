@@ -81,7 +81,6 @@ Plug 'dpelle/vim-LanguageTool'
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plug 'godlygeek/tabular'
 " Run interactive shell with alias etc when invoking commands
-" https://vim.fandom.com/wiki/Capture_ex_command_output
 " http://parobalth.github.io/vim-run-line
 Plug 'christoomey/vim-run-interactive'
 
@@ -179,6 +178,18 @@ function Terminal()
   :tabnew
   :terminal
 endfunction
+
+function ExecuteLine()
+  " Copy the line to next and run external command
+  " which replaces the line with the output
+  normal! yyp
+  :. !sh
+
+  " Alternatively open a clipboard
+  " Otherwise need this https://vim.fandom.com/wiki/Capture_ex_command_output
+  " :.w !sh -- to open a clipboard
+endfunction
+command! ExecuteLine :call ExecuteLine()
 
 " Standard “free” key where you can place custom mappings under https://nvie.com/posts/how-i-boosted-my-vim/
 let mapleader = ","
