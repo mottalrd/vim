@@ -442,12 +442,13 @@ nnoremap \ :Ag<SPACE>
 
 " Write a log of what I am working on
 function! WriteLog()
-    let titleString = expand('%:t')
-    if len(titleString) > 0
-        let &titlestring = expand('%:t')
-        let cmd = 'silent !personal_log "'.&titlestring.'"'
-        execute cmd
-    endif
+  let currentlyEditing = expand('%:t').':'.line(".")
+
+  if len(currentlyEditing) > 0
+    " personal_log available in bin/personal_log
+    let cmd = 'silent !personal_log '.currentlyEditing
+    execute cmd
+  endif
 endfunction
 
 autocmd BufWritePost,BufEnter * call WriteLog()
