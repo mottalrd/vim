@@ -83,6 +83,7 @@ Plug 'godlygeek/tabular'
 " Run interactive shell with alias etc when invoking commands
 " http://parobalth.github.io/vim-run-line
 Plug 'christoomey/vim-run-interactive'
+Plug 'sk1418/HowMuch'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
