@@ -225,6 +225,7 @@ if !exists("*EnableWriting")
     highlight Normal guifg=#a3a3a3 guibg=Black
     set spell spelllang=en_us
     set statusline+=%=%{WordCount()}\ words
+    set nonumber
   endfunction
 end
 
@@ -234,6 +235,7 @@ if !exists("*DisableWriting")
     set formatoptions=tcqj
     set nospell
     set statusline&
+    set number
   endfunction
 end
 
