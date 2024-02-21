@@ -456,6 +456,31 @@ endfunction
 
 autocmd BufWritePost,BufEnter * call WriteLog()
 
+function! CleanBuffers()
+  let l:current_buffer = bufnr('%')
+  let l:visible_buffers = [l:current_buffer]
+
+  " Check for visible buffers in split windows and add them to the list
+  " This accounts for more than one visible buffer in a split window setup
+  for win in range(1, winnr('$'))
+    let l:bufnr = winbufnr(win)
+    if index(l:visible_buffers, l:bufnr) == -1
+      call add(l:visible_buffers, l:bufnr)
+    endif
+  endfor
+
+  " Iterate through all buffers
+  for l:buffer_number in range(1, bufnr('$'))
+    " Check if the buffer is listed (i.e., open and not hidden)
+    if buflisted(l:buffer_number) && getbufvar(l:buffer_number, '&buftype') != 'terminal'
+      " Check if the buffer is not in the list of visible buffers to keep
+      if index(l:visible_buffers, l:buffer_number) == -1
+        execute 'bdelete' l:buffer_number
+      endif
+    endif
+  endfor
+endfunction
+
 " Better % to jump between keywords
 " https://thoughtbot.com/upcase/videos/navigating-within-ruby-files
 " https://github.com/tpope/vim-sensible/blob/master/plugin/sensible.vim
