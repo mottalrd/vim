@@ -561,6 +561,9 @@ highlight Folded guibg=black guifg=yellow
 " https://hackernoon.com/5-vim-plugins-i-cant-live-without-for-javascript-development-f7e98f98e8d5
 autocmd FileType javascript set formatprg=prettier\ --stdin
 
+" Clean session on exit
+autocmd VimLeave * exec "!rm -rf .vim-session"
+
 " Please, no Spring in Rails.
 " Ideally that would be loaded from the bash, but for some reason it does not.
 " https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
