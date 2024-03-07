@@ -84,6 +84,7 @@ Plug 'godlygeek/tabular'
 " http://parobalth.github.io/vim-run-line
 Plug 'christoomey/vim-run-interactive'
 Plug 'sk1418/HowMuch'
+Plug 'Yggdroot/indentLine'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
