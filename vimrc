@@ -472,8 +472,12 @@ function! CleanBuffers()
 
   " Iterate through all buffers
   for l:buffer_number in range(1, bufnr('$'))
-    " Check if the buffer is listed (i.e., open and not hidden)
-    if buflisted(l:buffer_number) && getbufvar(l:buffer_number, '&buftype') != 'terminal'
+    " Check if the buffer is a terminal and its name matches '_spec'
+    let l:is_terminal_with_spec = getbufvar(l:buffer_number, '&buftype') == 'terminal' && match(bufname(l:buffer_number), '_spec') >= 0
+    " Check if the buffer is not a terminal
+    let l:is_not_terminal = getbufvar(l:buffer_number, '&buftype') != 'terminal'
+
+    if buflisted(l:buffer_number) && (l:is_terminal_with_spec || l:is_not_terminal)
       " Check if the buffer is not in the list of visible buffers to keep
       if index(l:visible_buffers, l:buffer_number) == -1
         execute 'bdelete' l:buffer_number
