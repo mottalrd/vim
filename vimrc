@@ -383,7 +383,7 @@ nnoremap <leader>gh :GitGutterPreviewHunk<CR>
 let g:fugitive_summary_format = '%cD - %s'
 
 " Add a binding.pry or debugger for JS
-autocmd FileType ruby nnoremap <leader>tb <S-O>binding.pry<Esc>
+autocmd FileType ruby nnoremap <leader>tb <S-O>debugger<Esc>
 autocmd FileType javascript nnoremap <leader>tb <S-O>debugger<Esc>
 
 " Shifting blocks visually http://vim.wikia.com/wiki/Shifting_blocks_visually
