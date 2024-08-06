@@ -609,3 +609,9 @@ let g:languagetool_jar = '/usr/local/Cellar/languagetool/5.0/libexec/languagetoo
 
 " MAYBE: https://github.com/dense-analysis/ale
 " Automatically run code linters
+
+" MAYBE: https://github.com/junegunn/vim-peekaboo
+" Show registers content in sidebar
+
+" MAYBE: https://github.com/terryma/vim-expand-region
+" Visually select increasingly larger regions of text 
