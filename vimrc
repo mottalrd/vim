@@ -307,6 +307,18 @@ function! WordCount()
   return s:word_count
 endfunction
 
+function! MarkdownFoldExpr()
+    " Fold based on Markdown headers (e.g., #, ##, ###)
+    let line = getline(v:lnum)
+    if line =~ '^#'
+        return '>' . (strlen(matchstr(line, '^#*')))
+    endif
+    return '='
+endfunction
+
+autocmd FileType markdown setlocal foldmethod=expr
+autocmd FileType markdown setlocal foldexpr=MarkdownFoldExpr()
+
 " Copy path to unnamed register
 " https://github.com/vim-scripts/copypath.vim/blob/master/plugin/copypath.vim
 let g:copypath_copy_to_unnamed_register = 1
