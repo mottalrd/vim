@@ -19,7 +19,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ivalkeen/vim-ctrlp-tjump'
 " Use ctrlp with Ag to search
 " Editor theme
-Plug 'overcache/NeoSolarized'
+" Plug 'overcache/NeoSolarized'
+Plug 'morhetz/gruvbox'
 " Run tests using hotkeys
 Plug 'janko-m/vim-test'
 " Better way to open the files from a quickfix window
@@ -113,9 +114,9 @@ syntax on
 " Line numbers enabled
 set number
 
-set termguicolors
-set background=dark
-colorscheme NeoSolarized
+" set termguicolors
+" set background=dark
+colorscheme gruvbox
 
 " Hightlight line with cursor
 set cursorline
