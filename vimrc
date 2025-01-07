@@ -114,7 +114,7 @@ syntax on
 " Line numbers enabled
 set number
 
-" set termguicolors
+set termguicolors
 " set background=dark
 colorscheme gruvbox
 
