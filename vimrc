@@ -319,6 +319,8 @@ endfunction
 
 autocmd FileType markdown setlocal foldmethod=expr
 autocmd FileType markdown setlocal foldexpr=MarkdownFoldExpr()
+" Do not highlight markdown syntaxt errors. All _ were being highlighted
+autocmd FileType markdown hi! link markdownError Normal
 
 " Copy path to unnamed register
 " https://github.com/vim-scripts/copypath.vim/blob/master/plugin/copypath.vim
