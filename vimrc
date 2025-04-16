@@ -584,13 +584,29 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 " Clean session on exit
 autocmd VimLeave * exec "!rm -rf .vim-session"
 
-" Please, no Spring in Rails.
-" Ideally that would be loaded from the bash, but for some reason it does not.
-" https://vi.stackexchange.com/questions/16019/neovim-terminal-not-reading-bash-profile
-let $DISABLE_SPRING=1
-
 " languagetool and vim-LanguageTool
 let g:languagetool_jar = '/usr/local/Cellar/languagetool/5.0/libexec/languagetool-commandline.jar'
+
+" Extract filename from Markdown links for gf command
+function! MarkdownLinkExtract()
+  let l:line = getline('.')
+  let l:col = col('.')
+  let l:link_pattern = '\[\([^\]]*\)\](\([^)]*\))'
+  let l:start = searchpos(link_pattern, 'bcn', line('.'))[1]
+  
+  if l:start > 0
+    let l:text = matchstr(l:line[l:start-1:], link_pattern)
+    let l:file = substitute(l:text, '.*(\([^)]*\))', '\1', '')
+    if filereadable(l:file)
+      return l:file
+    endif
+  endif
+  
+  return expand('<cfile>')
+endfunction
+
+" Map gf to use the custom function
+autocmd FileType markdown nnoremap <buffer> gml :call netrw#BrowseX(MarkdownLinkExtract(), 0)<CR>
 
 " MAYBE: hotkeys for smart substitutions and camelcase to sneakcase
 " https://github.com/tpope/vim-abolish
