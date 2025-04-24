@@ -17,7 +17,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 " Use ctrlp to jump between tags
 Plug 'ivalkeen/vim-ctrlp-tjump'
-" Use ctrlp with Ag to search
 " Editor theme
 " Plug 'overcache/NeoSolarized'
 Plug 'morhetz/gruvbox'
@@ -450,14 +449,14 @@ endif
 " Add custom tags here, jump with :tag <tagname> or :tselect <tagname>
 set tags+=my_tags
 
-" Ag silver search setup with vim
-" https://robots.thoughtbot.com/faster-grepping-in-vim
-" https://vi.stackexchange.com/questions/14923/my-ag-shortcut-chokes-on-spaces
-" https://vi.stackexchange.com/questions/17206/how-to-keep-ag-the-silver-searcher-open-when-no-matches-are-found
-set grepprg=ag\ --nogroup\ --nocolor
+" Set ripgrep as the grep program (Claude AI setup)
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+" Map K to search for the word under cursor
 nnoremap K :silent! grep! "<C-R><C-W>"<CR>:cw<CR>
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
+" Create an Rg command similar to your Ag command
+command! -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
+" Quick shortcut to start an Rg search
+nnoremap \ :Rg<SPACE>
 
 " Write a log of what I am working on
 function! WriteLog()
