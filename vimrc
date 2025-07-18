@@ -174,13 +174,6 @@ end
 
 command! ReloadVimrc :call ReloadVimrc()
 
-" https://learnvimscriptthehardway.stevelosh.com/chapters/23.html
-" Open a terminal in a new tab
-function Terminal()
-  :tabnew
-  :terminal
-endfunction
-
 function ExecuteLine()
   " Copy the line to next and run external command
   " which replaces the line with the output
