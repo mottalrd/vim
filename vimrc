@@ -600,6 +600,11 @@ endfunction
 " Map gf to use the custom function
 autocmd FileType markdown nnoremap <buffer> gml :call netrw#BrowseX(MarkdownLinkExtract(), 0)<CR>
 
+" HowMuch replace ? with e
+" EvaluateResultLine and EvaluateResultVertical
+vmap <Leader>erl <Plug>AutoCalcAppendWithEq
+vmap <Leader>erv <Plug>AutoCalcReplaceWithSum
+
 " MAYBE: hotkeys for smart substitutions and camelcase to sneakcase
 " https://github.com/tpope/vim-abolish
 
