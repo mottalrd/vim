@@ -18,8 +18,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Use ctrlp to jump between tags
 Plug 'ivalkeen/vim-ctrlp-tjump'
 " Editor theme
-" Plug 'overcache/NeoSolarized'
-Plug 'morhetz/gruvbox'
+Plug 'dasupradyumna/midnight.nvim'
 " Run tests using hotkeys
 Plug 'janko-m/vim-test'
 " Better way to open the files from a quickfix window
@@ -83,8 +82,6 @@ Plug 'godlygeek/tabular'
 " Run interactive shell with alias etc when invoking commands
 " http://parobalth.github.io/vim-run-line
 Plug 'christoomey/vim-run-interactive'
-Plug 'sk1418/HowMuch'
-Plug 'Yggdroot/indentLine'
 
 " Copy RTF for presentation
 " Plug 'zerowidth/vim-copy-as-rtf'
@@ -115,7 +112,7 @@ set number
 
 set termguicolors
 " set background=dark
-colorscheme gruvbox
+colorscheme midnight
 
 " Hightlight line with cursor
 set cursorline
