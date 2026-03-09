@@ -18,7 +18,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Use ctrlp to jump between tags
 Plug 'ivalkeen/vim-ctrlp-tjump'
 " Editor theme
-Plug 'dasupradyumna/midnight.nvim'
+Plug 'morhetz/gruvbox'
 " Run tests using hotkeys
 Plug 'janko-m/vim-test'
 " Better way to open the files from a quickfix window
@@ -112,7 +112,7 @@ set number
 
 set termguicolors
 " set background=dark
-colorscheme midnight
+colorscheme gruvbox
 
 " Hightlight line with cursor
 set cursorline
